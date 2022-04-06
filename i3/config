@@ -39,7 +39,10 @@ exec --no-startup-id export NO_AT_BRIDGE=1
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+# alt key
+#set $mod Mod1
+# super key
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -134,10 +137,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+Tab floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -367,9 +370,9 @@ exec --no-startup-id discord
 # gaps
 for_window [class=".*"] border pixel 0
 #bindsym $mod+g 
-gaps top 35
+gaps top 34
 gaps inner 5
-
+for_window [class="firefox"] gaps top 35
 
 #smart_gaps on
 #smart_gaps inverse_outer
