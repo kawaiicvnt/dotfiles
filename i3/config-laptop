@@ -378,10 +378,10 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #exec_always --no-startup-id ~/.config/i3/polybar.sh &
 
 # If polybar freezes
-bindsym $mod+Shift+t exec --no-startup-id "bash killall polybar ; bash /home/v4ngbz/.config/i3/polybarone.sh"
+bindsym $mod+Shift+t exec --no-startup-id "bash killall polybar ; bash $HOME/.config/i3/polybarone.sh"
 
 #make polybar start in both screens
-exec_always --no-startup-id "bash /home/v4ngbz/.config/i3/polybarone.sh"
+exec_always --no-startup-id "bash $HOME/.config/i3/polybarone.sh"
 
 ##### XRANDR - MONITOR SETUP #####
 #exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --primary --mode 2560x1080 --rate 75 --pos 1920x645 --rotate normal --output DP-0 --off --output HDMI-1-1 --mode 1920x1080 --pos 0x645 --rotate normal --output DP-1 --mode 1920x1080 --rate 50 --pos 4480x0 --rotate left --output DVI-I-1-1 --off --output VGA-1-1 --off
@@ -400,7 +400,7 @@ exec --no-startup-id picom -bcCG
 ##### MOUSE ACCEL #####
 # Change the number after the --set-prop with your mouse id (find it using "xinput list")
 #exec --no-startup-id xinput --set-prop 18 'libinput Accel Profile Enabled' 0, 1
-exec --no-startup-id "bash /home/v4ngbz/.config/i3/xinput.sh"
+exec --no-startup-id "bash $HOME/.config/i3/xinput.sh"
 
 ##### WORKSPACE - MONITOR SETTINGS #####
 workspace $ws1 output $firstMonitor

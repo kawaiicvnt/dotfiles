@@ -4,6 +4,6 @@ while [ $POLYNUM -lt 3 ]
 do
 	killall polybar
 	sleep 1
-	/home/v4ngbz/.config/i3/polybar.sh
+	$HOME/.config/i3/polybar.sh
 	POLYNUM=$(ps ax | grep -vE "grep|spotify_status.py|polybar.sh" | grep "polybar --reload main -c" | wc -l)
 done
