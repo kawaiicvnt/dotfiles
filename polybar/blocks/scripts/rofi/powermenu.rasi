@@ -8,7 +8,7 @@
  */
 
 configuration {
-	font:							"Iosevka Nerd Font 10";
+	font:							"Iosevka Nerd Font 12";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
@@ -28,7 +28,7 @@ window {
 	border:							0px 0px 0px 0px;
 	border-color:					@ac;
     border-radius:                  0px;
-	width:							300px;
+	width:							25%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -78,7 +78,7 @@ listview {
     padding:                        0px;
     columns:                        1;
     lines:                          5;
-    spacing:                        6px;
+    spacing:                        12px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
@@ -90,20 +90,20 @@ mainbox {
     border-radius:                  0px;
 	border-color:					@ac;
     children:                       [ inputbar, listview ];
-    spacing:                       	6px;
-    padding:                        6px;
+    spacing:                       	12px;
+    padding:                        12px;
 }
 
 element {
     background-color:               @al;
     text-color:                     @fga;
     orientation:                    horizontal;
-    border-radius:                  20px;
-	padding: 						3px 3px 3px -23px;
+    border-radius:                  10px;
+	padding: 						6px 6px 6px -46px;
 }
 
 element-icon {
-    size:                           24px;
+    size:                           48px;
     border:                         0px;
 }
 

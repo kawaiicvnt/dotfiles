@@ -8,7 +8,7 @@
  */
 
 configuration {
-	font:							"Iosevka Nerd Font 10";
+	font:							"Iosevka Nerd Font 15";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
@@ -28,7 +28,7 @@ window {
 	border:							0px 0px 0px 0px;
 	border-color:					@ac;
     border-radius:                  0px;
-	width:							550px;
+	width:							50%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -36,10 +36,10 @@ window {
 
 prompt {
     enabled: 						true;
-	padding: 						6px 7px 4px 7px;
+	padding: 						12px 14px 8px 14px;
 	background-color: 				@ac;
 	text-color: 					@fg;
-	font:							"feather 12";
+	font:							"feather 16";
 }
 
 entry {
@@ -49,7 +49,7 @@ entry {
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search...";
-	padding: 						6px;
+	padding: 						12px;
     blink:                          true;
 }
 
@@ -68,9 +68,9 @@ inputbar {
 listview {
     background-color:               @al;
     padding:                        0px;
-    columns:                        2;
-    lines:                          8;
-    spacing:                        6px;
+    columns:                        3;
+    lines:                          12;
+    spacing:                        12px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
@@ -82,8 +82,8 @@ mainbox {
     border-radius:                  0px;
 	border-color:					@ac;
     children:                       [ inputbar, listview ];
-    spacing:                       	6px;
-    padding:                        6px;
+    spacing:                       	12px;
+    padding:                        12px;
 }
 
 element {
@@ -91,11 +91,11 @@ element {
     text-color:                     @fga;
     orientation:                    horizontal;
     border-radius:                  0px;
-	padding: 						3px;
+	padding: 						6px;
 }
 
 element-icon {
-    size:                           24px;
+    size:                           48px;
     border:                         0px;
 }
 
@@ -103,7 +103,7 @@ element-text {
     expand:                         true;
     horizontal-align:               0;
     vertical-align:                 0.5;
-    margin:                         0px 2.5px 0px 2.5px;
+    margin:                         0px 2px 0px 2px;
 }
 
 element selected {
