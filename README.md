@@ -9,7 +9,7 @@ In the i3 directory are like 500 similar scripts.
 They are for my different machines/monitor configs.
 If you use multimonitor setups / detachable screen setups, modify the i3/toggletv.sh script. Don't ask me how, it's easy gl.
 
-AND REPLACE IN ALL CONFIG FILES MY USERNAME WITH YOURS. WHEREVER YOU SEE "v4ngbz" (´ω｀)
+AND REPLACE IN ALL CONFIG FILES MY USERNAME WITH YOURS. WHEREVER YOU SEE "evie" (´ω｀)
 
 NEEDED DEPENDACIES FOR:
 
