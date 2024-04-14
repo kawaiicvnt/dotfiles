@@ -219,18 +219,19 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # PASSTHROUGH MODE #
 mode  "Passthrough" {
-	bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 2%+ && pkill -RTMIN+10 i3blocks
-	bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master unmute 2%- && pkill -RTMIN+10 i3blocks
-	bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle &&  pkill -RTMIN+10 i3blocks
-	bindsym XF86AudioPlay exec smart-playerctl play-pause
-	bindsym XF86AudioPause exec smart-playerctl play-pause
-	bindsym XF86AudioNext exec smart-playerctl next
-	bindsym XF86AudioPrev exec smart-playerctl previous
-	bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 10%+
-	bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
-	bindsym $mod+Shift+Return exec konsole
-	bindsym $mod+Return exec kitty
-        bindsym $mod+F12 mode "default"
+	bindsym XF86AudioRaiseVolume 	exec --no-startup-id amixer sset Master 2%+
+	bindsym XF86AudioLowerVolume 	exec --no-startup-id amixer sset Master unmute
+	bindsym XF86AudioMute 		exec --no-startup-id amixer sset Master toggle
+	bindsym 248 			exec --no-startup-id amixer sset Capture toggle
+	bindsym XF86AudioPlay 		exec --no-startup-id smart-playerctl play-pause
+	bindsym XF86AudioPause 		exec --no-startup-id smart-playerctl play-pause
+	bindsym XF86AudioNext 		exec --no-startup-id smart-playerctl next
+	bindsym XF86AudioPrev 		exec --no-startup-id smart-playerctl previous
+	bindsym XF86MonBrightnessUp 	exec --no-startup-id brightnessctl s 10%+
+	bindsym XF86MonBrightnessDown 	exec --no-startup-id brightnessctl s 10%-
+	bindsym $mod+Shift+Return 	exec konsole
+	bindsym $mod+Return 		exec kitty
+        bindsym $mod+F12 		mode "default"
 }
 bindsym $mod+F12 mode "Passthrough"
 
@@ -246,18 +247,19 @@ bindsym $mod+Shift+plus scratchpad show
 
 # AUDIO CONTROLS #
 
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +2% #increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 2%+ && pkill -RTMIN+10 i3blocks
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -2% #decrease sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master unmute 2%- && pkill -RTMIN+10 i3blocks
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle &&  pkill -RTMIN+10 i3blocks
-bindsym XF86AudioPlay exec smart-playerctl play-pause
-bindsym XF86AudioPause exec smart-playerctl play-pause
-bindsym XF86AudioNext exec smart-playerctl next
-bindsym XF86AudioPrev exec smart-playerctl previous
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 10%+
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+#bindsym XF86AudioRaiseVolume 	exec --no-startup-id pactl set-sink-volume 2 +2% #increase sound volume
+bindsym XF86AudioRaiseVolume 	exec --no-startup-id amixer sset Master 2%+
+#bindsym XF86AudioLowerVolume 	exec --no-startup-id pactl set-sink-volume 2 -2% #decrease sound volume
+bindsym XF86AudioLowerVolume 	exec --no-startup-id amixer sset Master unmute 2%-
+#bindsym XF86AudioMute 		exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
+bindsym XF86AudioMute 		exec --no-startup-id amixer sset Master toggle
+bindsym 248 			exec --no-startup-id amixer sset Capture toggle
+bindsym XF86AudioPlay 		exec smart-playerctl play-pause
+bindsym XF86AudioPause 		exec smart-playerctl play-pause
+bindsym XF86AudioNext 		exec smart-playerctl next
+bindsym XF86AudioPrev 		exec smart-playerctl previous
+bindsym XF86MonBrightnessUp 	exec --no-startup-id brightnessctl s 10%+
+bindsym XF86MonBrightnessDown 	exec --no-startup-id brightnessctl s 10%-
 
 # screenshot
 bindsym --release $mod+Shift+p exec scrot --select $HOME/Pictures/screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
@@ -379,7 +381,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #exec_always --no-startup-id ~/.config/i3/polybar.sh &
 
 # If polybar freezes
-bindsym $mod+Shift+t exec --no-startup-id "bash killall polybar ; bash $HOME/.config/i3/polybarone.sh"
+#bindsym $mod+Shift+t exec --no-startup-id "bash killall polybar ; bash $HOME/.config/i3/polybarone.sh"
+bindsym $mod+Shift+t exec --no-startup-id "polybar --reload main -c $HOME/.config/polybar/blocks/config.ini &"
 
 #make polybar start in both screens
 exec_always --no-startup-id "bash $HOME/.config/i3/polybarone.sh"
