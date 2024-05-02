@@ -3,6 +3,8 @@ Cringe on main ≖‿≖
 
 No support attached. Good luck have fun.
 
+Edit: sway configuration will drop soon :)
+
 .
 
 In the i3 directory are like 500 similar scripts.
