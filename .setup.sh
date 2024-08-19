@@ -9,9 +9,11 @@ ln -s "$PWD/kitty"   "$HOME/.config/kitty"
 ln -s "$PWD/picom"   "$HOME/.config/picom"
 ln -s "$PWD/polybar" "$HOME/.config/polybar"
 ln -s "$PWD/thunar"  "$HOME/.config/thunar"
+ln -s "$PWD/waybar"  "$HOME/.config/waybar"
+ln -s "$PWD/sway"    "$HOME/.config/sway"
 
 # install needed bins w/ pacman
-sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh
+sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
 
 # install pipewire and audio stuff
 sudo pacman -Sy pipewire pipewire-pulse alsa alsa-utils pavucontrol

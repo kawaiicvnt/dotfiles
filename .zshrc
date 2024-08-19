@@ -165,10 +165,20 @@ zstyle ':vcs_info:git:*' formats '%b'
 zstyle ':completion:*:*' list-colors '=*=1;128;256;196'
 zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
 
+# exports
+# eclpise
+export GDK_USE_XFT=0
+( source /opt/esp-idf/export.sh > /dev/null & )
 
+clear
 
 # Last, but not least, my greeting thingy
 uwufetch
 echo
 df -hT -t ext4 -t fuseblk | grep -v '/boot'
 echo "----------------------------------------------------------------"
+
+alias sl='sway -c ~/.config/sway/config'
+alias kssh="kitty +kitten ssh"
+alias spw="startplasma-wayland"
+
