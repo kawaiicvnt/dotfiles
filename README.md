@@ -3,7 +3,7 @@ Cringe on main ≖‿≖
 
 No support attached. Good luck have fun.
 
-Edit: sway configuration will drop soon :)
+sway + waybar configurations still in progress, but something working is up
 
 .
 
