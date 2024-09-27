@@ -178,7 +178,8 @@ echo
 df -hT -t ext4 -t fuseblk | grep -v '/boot'
 echo "----------------------------------------------------------------"
 
-alias sl='sway -c ~/.config/sway/config'
+alias sl='exec dbus-launch sway -c ~/.config/sway/config'
 alias kssh="kitty +kitten ssh"
 alias spw="startplasma-wayland"
-
+alias i3l="xinit -- :0 vt2"
+alias ffmpreg="ffmpeg"
