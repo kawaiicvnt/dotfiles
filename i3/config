@@ -449,7 +449,7 @@ gaps right 5
 gaps bottom 5
 for_window [class="firefox"] gaps top all 35
 
-smart_gaps on
+#smart_gaps on
 #smart_gaps inverse_outer
 
 #smart_borders on
