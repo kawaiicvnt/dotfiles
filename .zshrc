@@ -8,7 +8,8 @@ ZSH=/usr/share/oh-my-zsh/
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -141,7 +142,7 @@ bindkey '^[[1;5D' backward-word
 bindkey '\e[3~' delete-char
 
 # PS1 settings
-PS1="%F{#55ccaa}[ %F{#00ff55}%n@%m %F{yellow}%~ %F{#55ccaa}] # %F{white}"
+#PS1="%F{#55ccaa}[ %F{#00ff55}%n@%m %F{yellow}%~ %F{#55ccaa}] # %F{white}"
 source /home/evie/.git/github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # vi mode
@@ -151,14 +152,14 @@ bindkey ^R history-incremental-search-backward
 bindkey ^S history-incremental-search-forward
 
 # git in zsh
-autoload -Uz vcs_info
-autoload -Uz compinit && compinit
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-RPROMPT='${vcs_info_msg_0_}'
+#autoload -Uz vcs_info
+#autoload -Uz compinit && compinit
+#precmd_vcs_info() { vcs_info }
+#precmd_functions+=( precmd_vcs_info )
+#setopt prompt_subst
+#RPROMPT='${vcs_info_msg_0_}'
 # PROMPT='${vcs_info_msg_0_}%# '
-zstyle ':vcs_info:git:*' formats '%b'
+#zstyle ':vcs_info:git:*' formats '%b'
 
 # coloring and whatnot
 # completion colors
@@ -172,14 +173,41 @@ export GDK_USE_XFT=0
 
 clear
 
+SSH_ENV="$HOME/.ssh/agent-environment"
+
+function start_agent {
+    echo "Initialising new SSH agent..."
+    ssh-agent | sed 's/^echo/#echo/' >"$SSH_ENV"
+    echo succeeded
+    chmod 600 "$SSH_ENV"
+    . "$SSH_ENV" >/dev/null
+    ssh-add id_ed25519
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "$SSH_ENV" ]; then
+    . "$SSH_ENV" >/dev/null
+    #ps $SSH_AGENT_PID doesn't work under Cygwin
+    ps -ef | grep $SSH_AGENT_PID | grep ssh-agent$ >/dev/null || {
+        start_agent
+    }
+else
+    start_agent
+fi
+
+clear
+
 # Last, but not least, my greeting thingy
 uwufetch
 echo
 df -hT -t ext4 -t fuseblk | grep -v '/boot'
-echo "----------------------------------------------------------------"
+#echo "----------------------------------------------------------------"
 
 alias sl='exec dbus-launch sway -c ~/.config/sway/config'
 alias kssh="kitty +kitten ssh"
 alias spw="startplasma-wayland"
 alias i3l="xinit -- :0 vt2"
 alias ffmpreg="ffmpeg"
+alias factorio-steam="steam steam://rungameid/427520"
+function killname(){ kill -9 $(ps -u evie a | grep $1 | grep -v grep | awk '{print $1}') }

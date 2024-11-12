@@ -6,6 +6,6 @@
   bga:  #44475aFF;
   fga:  #FFFFFFFF;
   fg:   #FFFFFFFF;
-  ac:   #00B19FFF;
-  se:   #00B19F40;
+  ac:   #00C7DFFF;
+  se:   #00C7DF40;
 }

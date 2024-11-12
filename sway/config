@@ -511,6 +511,7 @@ output * background /home/evie/Pictures/butterflyd.jpg fill
 
 input type:keyboard {
         xkb_layout us,gr
+	xkb_options caps:none,grp:caps_toggle,grp:win_space_toggle
 }
-bindsym $mod+space input type:keyboard xkb_switch_layout next
-bindsym Caps_Lock input type:keyboard xkb_switch_layout next
+#bindsym $mod+space input type:keyboard xkb_switch_layout next
+#bindsym Caps_Lock input type:keyboard xkb_switch_layout next

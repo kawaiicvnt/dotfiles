@@ -11,6 +11,7 @@ ln -s "$PWD/polybar" "$HOME/.config/polybar"
 ln -s "$PWD/thunar"  "$HOME/.config/thunar"
 ln -s "$PWD/waybar"  "$HOME/.config/waybar"
 ln -s "$PWD/sway"    "$HOME/.config/sway"
+ln -s "$PWD/swaylock" "$HOME/.config/swaylock"
 
 # install needed bins w/ pacman
 sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
@@ -23,6 +24,6 @@ paru -Sy smart-playerctl-git uwufetch oh-my-zsh-git
 # make github directory and clone needed repos
 mkdir -p $HOME/.git/github/
 cd $HOME/.git/github/
-git clone https://github.com/Jvanrhijn/polybar-spotify.git
-git clone https://github.com/haideralipunjabi/polybar-browsermediacontrol.git
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone --depth=1 https://github.com/Jvanrhijn/polybar-spotify.git
+git clone --depth=1 https://github.com/haideralipunjabi/polybar-browsermediacontrol.git
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git
