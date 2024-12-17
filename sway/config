@@ -269,7 +269,7 @@ bindsym XF86MonBrightnessUp 	exec --no-startup-id lightctl +10%
 bindsym XF86MonBrightnessDown 	exec --no-startup-id lightctl -10%
 
 # screenshot
-bindsym --release $mod+Shift+p exec "bash \"grim -g "$(slurp -d)" - | swappy -f -\""
+bindsym --release $mod+Shift+p exec grim -g "$(slurp -d)" - | swappy -f -
 #FIND KEYSYMS:   xev -event keyboard  | egrep -o 'keycode.*\)'
 
 # XRANDR #
