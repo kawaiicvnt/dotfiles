@@ -196,6 +196,8 @@ else
     start_agent
 fi
 
+eval `keychain --eval ~/.ssh/id_ed25519`
+
 clear
 
 # Last, but not least, my greeting thingy
