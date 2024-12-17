@@ -2,16 +2,17 @@
 echo "make sure this is run in and from your dotfiles directory"
 
 # link folders / files
-ln -s "$PWD/.zshrc"  "$HOME/.zshrc"
-ln -s "$PWD/dunst"   "$HOME/.config/dunst"
-ln -s "$PWD/i3"      "$HOME/.config/i3"
-ln -s "$PWD/kitty"   "$HOME/.config/kitty"
-ln -s "$PWD/picom"   "$HOME/.config/picom"
-ln -s "$PWD/polybar" "$HOME/.config/polybar"
-ln -s "$PWD/thunar"  "$HOME/.config/thunar"
-ln -s "$PWD/waybar"  "$HOME/.config/waybar"
-ln -s "$PWD/sway"    "$HOME/.config/sway"
-ln -s "$PWD/swaylock" "$HOME/.config/swaylock"
+ln -s "$PWD/.zshrc"  	"$HOME/.zshrc"
+ln -s "$PWD/dunst"   	"$HOME/.config/dunst"
+ln -s "$PWD/i3"      	"$HOME/.config/i3"
+ln -s "$PWD/kitty"   	"$HOME/.config/kitty"
+ln -s "$PWD/picom"   	"$HOME/.config/picom"
+ln -s "$PWD/polybar" 	"$HOME/.config/polybar"
+ln -s "$PWD/thunar"  	"$HOME/.config/thunar"
+ln -s "$PWD/waybar"  	"$HOME/.config/waybar"
+ln -s "$PWD/sway"    	"$HOME/.config/sway"
+ln -s "$PWD/swaylock"	"$HOME/.config/swaylock"
+ln -s "$PWD/avizo"	"$HOME/.config/avizo"
 
 # install needed bins w/ pacman
 sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
