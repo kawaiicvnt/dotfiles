@@ -1,0 +1,20 @@
+# Normal
+swaymsg "output eDP-1 transform normal"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix 1 0 0 0 1 0"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix 1 0 0 0 1 0"
+
+# 90
+swaymsg "output eDP-1 transform 90"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix 0 \"-1\" 1 1 0 0"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix 0 \"-1\" 1 1 0 0"
+
+# 180
+swaymsg "output eDP-1 transform 180"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix \"-1\" 0 1 0 \"-1\" 1"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix \"-1\" 0 1 0 \"-1\" 1"
+
+# 270
+swaymsg "output eDP-1 transform 270"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix 0 1 0 \"-1\" 0 1"
+swaymsg "input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix 0 1 0 \"-1\" 0 1"
+
