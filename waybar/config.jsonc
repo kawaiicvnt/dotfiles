@@ -58,7 +58,12 @@
         "tooltip-format": "{app}: {title}"
     },
     "sway/language": {
-	    "format": "{short}"
+	    "format": "{short}",
+	    "padding": 0,
+	    "margin": 0,
+	    "spacing": 0,
+	    "border": 0,
+	    "min-width": 0
     },
     "idle_inhibitor": {
         "format": "{icon}",
