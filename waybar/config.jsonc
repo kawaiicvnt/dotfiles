@@ -51,7 +51,7 @@
         "format": "<span style=\"italic\">{}</span>"
     },
     "sway/scratchpad": {
-        "format": "{icon} {count}",
+        "format": "{icon}   {count}",
         "show-empty": false,
         "format-icons": ["", ""],
         "tooltip": true,
@@ -66,7 +66,7 @@
 	    "min-width": 0
     },
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": "{icon}.",
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -103,11 +103,11 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 50,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% {icon} ",
         "format-full": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
@@ -143,7 +143,7 @@
         "format-bluetooth-muted": " {icon}   | {format_source}",
         "format-muted": "   | {format_source}",
         "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source-muted": ".",
         "format-icons": {
             "headphone": "",
             "hands-free": ["", "", ""],

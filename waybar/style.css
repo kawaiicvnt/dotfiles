@@ -130,20 +130,20 @@ label.module:hover {
     color: #ffffff;
     background-color: #26A65B;
 }
-
+*/
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: rgba(134, 206, 203, 0.3);
+        color: #ffffff;
     }
-}*/
+}
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: #e12885;
     color: #ffffff;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -173,8 +173,6 @@ label:focus {
 }
 /*
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
 }
 
 #memory {
@@ -242,24 +240,26 @@ label:focus {
     background-color: rgba(134, 206, 203, 0.3);
 }
 
+#tray:hover {
+    background-color: rgba(134, 206, 203, 0.4);
+}
+/*
 #tray > .passive {
     -gtk-icon-effect: dim;
-}
+}*/
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #e12885;
 }
-/*
+
 #idle_inhibitor {
-    background-color: #2d3436;
+    padding: 0 0px;
+    margin: 0 0px;
+    min-width: 26px;
 }
 
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
+/*
 #mpd {
     background-color: #66cc99;
     color: #2a5c45;
@@ -279,7 +279,7 @@ label:focus {
 
 #language {
     /*background: #00b093;*/
-    padding: 0 5px;
+    padding: 0 8px;
     margin: 0 0px;
     min-width: 0px;
 }
