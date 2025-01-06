@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-    background-color: rgba(55, 59, 62, 0.7);
-    border-bottom: 3px solid rgba(190, 200, 209, 0.8);
+    background-color: rgba(33, 52, 51, 0.7);
+    border-bottom: 3px solid rgba(67, 103, 102, 0.8);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -49,12 +49,12 @@ button:hover {
 }
 
 label.module{
-    background-color: rgba(134, 206, 203, 0.4);
+    background-color: rgba(100, 155, 152, 0.3);
 }
 
 /* you can set a style on hover for any module like this */
 label.module:hover {
-    background-color: rgba(134, 206, 203, 0.6);
+    background-color: rgba(100, 155, 152, 0.5);
 }
 
 #workspaces button {
@@ -154,17 +154,33 @@ label.module:hover {
 }
 
 #power-profiles-daemon.performance {
-    background-color: rgba(255, 60, 173, 0.4);
+    background-color: rgba(165, 40, 130, 0.3);
+    color: #ffffff;
+}
+
+#power-profiles-daemon.performance:hover {
+    background-color: rgba(165, 40, 130, 0.5);
     color: #ffffff;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: rgba(134, 206, 203, 0.4);
+    background-color: rgba(100, 155, 152, 0.3);
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced:hover {
+    background-color: rgba(100, 155, 152, 0.5);
     color: #ffffff;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: rgba(67, 206, 203, 0.4);
+    background-color: rgba(23, 135, 135, 0.3);
+    color: #000000;
+}
+
+
+#power-profiles-daemon.power-saver:hover {
+    background-color: rgba(44, 135, 135, 0.5);
     color: #000000;
 }
 
@@ -221,7 +237,7 @@ label:focus {
 }
 */
 #custom-media.custom-spotify {
-    background-color: rgba(134, 206, 203, 0.5);
+    background-color: rgba(100, 155, 152, 0.3);
 }
 /*
 #custom-media.custom-vlc {
@@ -237,11 +253,11 @@ label:focus {
 }
 */
 #tray {
-    background-color: rgba(134, 206, 203, 0.4);
+    background-color: rgba(100, 155, 152, 0.3);
 }
 
 #tray:hover {
-    background-color: rgba(134, 206, 203, 0.6);
+    background-color: rgba(100, 155, 152, 0.5);
 }
 /*
 #tray > .passive {

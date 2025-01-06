@@ -25,7 +25,7 @@ y               = 1
 
 [custom_ascii]
 color           = "#86cecb"
-path		= "~/.config/ascii/miku2.txt"
+path		= "~/.config/ascii/miku2-ansi.txt"
 
 [randomize]
 key_color       = false
