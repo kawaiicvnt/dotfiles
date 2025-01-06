@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-    background-color: rgba(55, 59, 62, 0.6);
-    border-bottom: 3px solid rgba(190, 200, 209, 0.6);
+    background-color: rgba(55, 59, 62, 0.7);
+    border-bottom: 3px solid rgba(190, 200, 209, 0.8);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -49,12 +49,12 @@ button:hover {
 }
 
 label.module{
-    background-color: rgba(134, 206, 203, 0.3);
+    background-color: rgba(134, 206, 203, 0.4);
 }
 
 /* you can set a style on hover for any module like this */
 label.module:hover {
-    background-color: rgba(134, 206, 203, 0.5);
+    background-color: rgba(134, 206, 203, 0.6);
 }
 
 #workspaces button {
@@ -64,11 +64,11 @@ label.module:hover {
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(25, 27, 32, 0.6);
 }
 
 #workspaces button.focused {
-    background-color: #373b3e;
+    background-color: rgba(38, 40, 46, 0.6);
     box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -133,7 +133,7 @@ label.module:hover {
 */
 @keyframes blink {
     to {
-        background-color: rgba(134, 206, 203, 0.3);
+        background-color: rgba(134, 206, 203, 0.5);
         color: #ffffff;
     }
 }
@@ -152,21 +152,21 @@ label.module:hover {
 #power-profiles-daemon {
     padding-right: 15px;
 }
-/*
+
 #power-profiles-daemon.performance {
-    background-color: #f53c3c;
+    background-color: rgba(255, 60, 173, 0.4);
     color: #ffffff;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
+    background-color: rgba(134, 206, 203, 0.4);
     color: #ffffff;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
+    background-color: rgba(67, 206, 203, 0.4);
     color: #000000;
-}*/
+}
 
 label:focus {
     background-color: #000000;
@@ -221,7 +221,7 @@ label:focus {
 }
 */
 #custom-media.custom-spotify {
-    background-color: rgba(134, 206, 203, 0.3);
+    background-color: rgba(134, 206, 203, 0.5);
 }
 /*
 #custom-media.custom-vlc {
@@ -237,11 +237,11 @@ label:focus {
 }
 */
 #tray {
-    background-color: rgba(134, 206, 203, 0.3);
+    background-color: rgba(134, 206, 203, 0.4);
 }
 
 #tray:hover {
-    background-color: rgba(134, 206, 203, 0.4);
+    background-color: rgba(134, 206, 203, 0.6);
 }
 /*
 #tray > .passive {
