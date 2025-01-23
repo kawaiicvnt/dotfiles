@@ -1,3 +1,7 @@
+# We close process monitoring before we move forward to avoid polluting the term. We run this first as a bg process, cause it takes too long to complete. Then we write the esp-idf related env variables to a tmp file
+set +m
+(source /opt/esp-idf/export.sh &> /dev/null && env | grep "esp-idf" > /tmp/esp_idf_evie_env.tmp ) &
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -110,8 +114,6 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-
-
 ##### EVIE ZONE #####
 
 # export colors
@@ -169,7 +171,7 @@ zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33
 # exports
 # eclpise
 export GDK_USE_XFT=0
-( source /opt/esp-idf/export.sh > /dev/null & )
+#. /opt/esp-idf/export.sh &> /dev/null &
 
 clear
 
@@ -201,7 +203,8 @@ eval `keychain --eval ~/.ssh/id_ed25519`
 clear
 
 # Last, but not least, my greeting thingy
-uwufetch
+#uwufetch
+macchina | sed "s/\( Type1ProductConfigId\| 103C_5335M8\)//g" | sed "s/ 13-/ 13-bf0xxx/g"| sed "s/13-bf0xxxbf0xxx/13-bf0xxx/g"
 echo
 df -hT -t ext4 -t fuseblk | grep -v '/boot'
 #echo "----------------------------------------------------------------"
@@ -213,3 +216,16 @@ alias i3l="xinit -- :0 vt2"
 alias ffmpreg="ffmpeg"
 alias factorio-steam="steam steam://rungameid/427520"
 function killname(){ kill -9 $(ps -u evie a | grep $1 | grep -v grep | awk '{print $1}') }
+
+# This HAS to be at the END of the script. It's waiting for bg tasks to complete and sources their
+#{
+#	wait
+#	source <(cat /tmp/esp_idf_evie_env.tmp)
+#	rm "/tmp/esp_idf_evie_env.tmp"
+#	set -m
+#} &
+wait
+source <(cat /tmp/esp_idf_evie_env.tmp)
+rm "/tmp/esp_idf_evie_env.tmp"
+set -m
+
