@@ -274,7 +274,7 @@ bindsym $mod+minus scratchpad show
 bindsym XF86AudioRaiseVolume 	exec --no-startup-id volumectl -u up 
 bindsym XF86AudioLowerVolume 	exec --no-startup-id volumectl -u down
 bindsym XF86AudioMute 		exec --no-startup-id volumectl toggle-mute
-bindsym XF86AudioMicMute	exec --no-startup-id volumectl -m toggle-mute
+#bindsym XF86AudioMicMute	exec --no-startup-id volumectl -m toggle-mute
 
 #bindsym XF86AudioRaiseVolume 	exec --no-startup-id pactl set-sink-volume 2 +2% #increase sound volume
 #bindsym XF86AudioRaiseVolume 	exec --no-startup-id amixer sset Master 2%+ ; volumectl -u up
@@ -282,7 +282,7 @@ bindsym XF86AudioMicMute	exec --no-startup-id volumectl -m toggle-mute
 #bindsym XF86AudioLowerVolume 	exec --no-startup-id amixer sset Master unmute 2%- ; volumectl -u down
 #bindsym XF86AudioMute 		exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
 #bindsym XF86AudioMute 		exec --no-startup-id amixer sset Master toggle ; volumectl toggle-mute
-#bindsym XF86AudioMicMute	exec --no-startup-id amixer sset Capture toggle ; volumectl -m toggle-mute
+bindsym XF86AudioMicMute	exec --no-startup-id amixer sset Capture toggle ; volume -m toggle-mute
 bindsym XF86AudioPlay 		exec smart-playerctl play-pause
 bindsym XF86AudioPause 		exec smart-playerctl play-pause
 bindsym XF86AudioNext 		exec smart-playerctl next
