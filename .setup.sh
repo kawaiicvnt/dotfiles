@@ -13,6 +13,9 @@ ln -s "$PWD/waybar"  	"$HOME/.config/waybar"
 ln -s "$PWD/sway"    	"$HOME/.config/sway"
 ln -s "$PWD/swaylock"	"$HOME/.config/swaylock"
 ln -s "$PWD/avizo"	"$HOME/.config/avizo"
+ln -s "$PWD/macchina"	"$HOME/.config/macchina"
+ln -s "$PWD/ascii"	"$HOME/.config/ascii"
+ln -s "$PWD/fish"	"$HOME/.config/fish"
 
 # install needed bins w/ pacman
 sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
@@ -20,7 +23,7 @@ sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
 # install pipewire and audio stuff
 sudo pacman -Sy pipewire pipewire-pulse alsa alsa-utils pavucontrol
 
-paru -Sy smart-playerctl-git uwufetch oh-my-zsh-git
+paru -Sy smart-playerctl-git uwufetch oh-my-zsh-git volumectl avizo
 
 # make github directory and clone needed repos
 mkdir -p $HOME/.git/github/
