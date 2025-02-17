@@ -102,6 +102,10 @@ label.module:hover {
     color: #ffffff;
 }
 
+#bluetooth {
+	padding: 0 8px;
+}
+
 #window,
 #workspaces {
     margin: 0 4px;
@@ -270,7 +274,7 @@ label:focus {
 }
 
 #idle_inhibitor {
-    padding: 0 0px;
+    padding: 0 2px;
     margin: 0 0px;
     min-width: 26px;
 }

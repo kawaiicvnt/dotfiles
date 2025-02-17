@@ -11,7 +11,9 @@
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
-        "sway/scratchpad"
+        "sway/scratchpad",
+	"custom/rot-0",
+	"custom/rot-180"
     ],
     "modules-center": [
         "sway/window"
@@ -20,6 +22,7 @@
         "idle_inhibitor",
         "pulseaudio",
         "network",
+	"bluetooth",
         "power-profiles-daemon",
         "cpu",
         "memory",
@@ -49,6 +52,9 @@
     // },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/bluetooth" : {
+	"format": " {status} "
     },
     "sway/scratchpad": {
         "format": "{icon}   {count}",
@@ -166,5 +172,16 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/rot-180": {
+	"format": "{icon}180",
+	"format-icon": "180",
+	"on-click": "swaymsg output eDP-1 transform 180 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix \"-1\" 0 1 0 \"-1\" 1 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix \"-1\" 0 1 0 \"-1\" 1"
+    },
+    "custom/rot-0": {
+	"format": "{icon} 0 ",
+	"format-icon": "0",
+	"on-click": "swaymsg output eDP-1 transform 0 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix 1 0 0 0 1 0 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix 1 0 0 0 1 0"
     }
+
 }
