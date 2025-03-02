@@ -54,10 +54,10 @@
     //     }
     // },
     "hyprland/window": {
-	"max-length": 75
+	"max-length": 80
     },
     "sway/window": {
-	"max-length": 75
+	"max-length": 80
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -144,11 +144,12 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+	"max-length": 25,
+        "format-wifi": "   ({signalStrength}%) {essid}", 
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format": "{gwaddr}/{cidr} via {ifname} on {essid}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠   Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
