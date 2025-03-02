@@ -10,16 +10,21 @@
     //"width": 2380, // Gaps between the edges (4px) 
     // Choose the order of the modules
     "modules-left": [
+        "clock",
+        "battery",
+        "idle_inhibitor",
         "sway/workspaces",
         "sway/scratchpad",
+	"hyprland/workspaces",
+	"hyprland/scratchpad",
 	"custom/rot-0",
 	"custom/rot-180"
     ],
     "modules-center": [
-        "sway/window"
+        "sway/window",
+	"hyprland/window"
     ],
     "modules-right": [
-        "idle_inhibitor",
         "pulseaudio",
         "network",
 	"bluetooth",
@@ -29,8 +34,6 @@
         "temperature",
         "backlight",
         "sway/language",
-        "battery",
-        "clock",
         "tray"
     ],
     // Modules configuration
@@ -50,6 +53,12 @@
     //         "default": ""
     //     }
     // },
+    "hyprland/window": {
+	"max-length": 75
+    },
+    "sway/window": {
+	"max-length": 75
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
