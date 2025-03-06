@@ -1,6 +1,6 @@
 # We close process monitoring before we move forward to avoid polluting the term. We run this first as a bg process, cause it takes too long to complete. Then we write the esp-idf related env variables to a tmp file
-set +m
-(source /opt/esp-idf/export.sh &> /dev/null && env | grep "esp-idf" > /tmp/esp_idf_evie_env.tmp ) &
+#set +m
+#(source /opt/esp-idf/export.sh &> /dev/null && env | grep "esp-idf" > /tmp/esp_idf_evie_env.tmp ) &
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -215,6 +215,7 @@ alias spw="startplasma-wayland"
 alias i3l="xinit -- :0 vt2"
 alias ffmpreg="ffmpeg"
 alias factorio-steam="steam steam://rungameid/427520"
+alias mbit="picocom -b 115200 -c -d 8 --imap lfcrlf"
 function killname(){ kill -9 $(ps -u evie a | grep $1 | grep -v grep | awk '{print $1}') }
 
 # This HAS to be at the END of the script. It's waiting for bg tasks to complete and sources their
@@ -224,8 +225,10 @@ function killname(){ kill -9 $(ps -u evie a | grep $1 | grep -v grep | awk '{pri
 #	rm "/tmp/esp_idf_evie_env.tmp"
 #	set -m
 #} &
-wait
-source <(cat /tmp/esp_idf_evie_env.tmp)
-rm "/tmp/esp_idf_evie_env.tmp"
-set -m
+#wait
+#source <(cat /tmp/esp_idf_evie_env.tmp)
+#rm "/tmp/esp_idf_evie_env.tmp"
+#set -m
 
+alias ghidras=_JAVA_AWT_WM_NONREPARENTING=1 ghidra
+PATH+=:~/.local/bin
