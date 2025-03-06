@@ -1,12 +1,16 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "feather", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: "icomoon-feather, Monospace"; /*, FontAwesome, Roboto, Helvetica, Arial, sans-serif*/;
+    font-size: 12px;
+    border-radius: 3px;
 }
 
 window#waybar {
-    background-color: rgba(33, 52, 51, 0.7);
-    border-bottom: 3px solid rgba(67, 103, 102, 0.8);
+    background-image: linear-gradient(150deg, rgba(0, 0, 0, 0), rgba(0,0,0,0.375), rgba(0,0,0,0)), linear-gradient(30deg, rgba(30, 100, 60, 0.67), rgba(50, 125, 175, 0.67));
+    border-bottom: 3px solid rgba(200, 200, 200, 0.8);
+    border-radius: 5px;
+    
+    /*overflow: hidden;*/
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -102,13 +106,10 @@ label.module:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
-#mpd {
+#mpd,
+#bluetooth {
     padding: 0 10px;
     color: #ffffff;
-}
-
-#bluetooth {
-	padding: 0 8px;
 }
 
 #window,
@@ -184,13 +185,13 @@ label.module:hover {
 
 #power-profiles-daemon.power-saver {
     background-color: rgba(23, 135, 135, 0.3);
-    color: #000000;
+    color: #ffffff;
 }
 
 
 #power-profiles-daemon.power-saver:hover {
     background-color: rgba(44, 135, 135, 0.5);
-    color: #000000;
+    color: #ffffff;
 }
 
 label:focus {
@@ -279,9 +280,7 @@ label:focus {
 }
 
 #idle_inhibitor {
-    padding: 0 2px;
-    margin: 0 0px;
-    min-width: 26px;
+    min-width: 2px;
 }
 
 /*
