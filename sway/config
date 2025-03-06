@@ -558,7 +558,7 @@ output * background /home/evie/Pictures/miscellanious/wallpaper-rotation/wallpap
 
 output "Samsung Display Corp. 0x4166 Unknown" {
 	mode 2880x1800
-	pos 2560 0
+	pos 1920 150
 	scale 1.3
 	adaptive_sync enabled
 	render_bit_depth 10
@@ -574,15 +574,15 @@ output "Chimei Innolux Corporation 0x14C9 Unknown" {
 
 output "Dell Inc. DELL U2421E JZVVBH3" {
 	mode 1920x1200
-	pos 4776 0
+	pos 0 200
 	scale 1
 	adaptive_sync enabled
 }
 
 output "Samsung Electric Company SAMSUNG Unknown" {
 	mode 3840x2160
-	pos 4776 0
-	scale 1
+	pos 4136 0
+	scale 1.3
 	adaptive_sync enabled
 }
 output "LG Electronics LG HDR WFHD 0x0009F6A1" {
