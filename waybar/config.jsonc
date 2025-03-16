@@ -160,7 +160,7 @@
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{gwaddr}/{cidr} via {ifname} on {essid}",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠   Disconnected",
+        "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
