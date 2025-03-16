@@ -2,8 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  vscode-extensions = (import ./modules/packages/vscode.nix) { pkgs = pkgs; lib = lib; };
+  
+in
 {
   # Enable Bluetooth
   hardware.bluetooth = {
@@ -69,6 +73,7 @@
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -184,8 +189,9 @@
       # WM
         hyprlock
         waybar
-        swaybg
+        swww
         wofi
+        kdePackages.polkit-kde-agent-1
       # Image
         imv
       # Sound
@@ -258,11 +264,14 @@
         # Misc
           ascii
       # IDEs
-        vscode
+        jetbrains.rust-rover
         jetbrains.pycharm-community-bin
         jetbrains.idea-community
         android-studio
         ghidra
+        (vscode-with-extensions.override {
+          vscodeExtensions = vscode-extensions;
+        })
     
     # Social
       discord-ptb
