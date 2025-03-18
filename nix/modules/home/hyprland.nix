@@ -1,4 +1,5 @@
 {
+  pkgs,
   host,
   username,
   config,
@@ -8,6 +9,9 @@
     (import ../../../hosts/${host}/variables.nix)
     extraMonitorSettings
     ;
+  mod = "SUPER";
+  fileManager = "dolphin";
+  menu = "rofi -show dmenu";
 in {
   wayland.windowManager.hyprland = {
     settings = {
@@ -45,10 +49,10 @@ in {
         sensitivity = -0.25;
         accel_profile = "adaptive";
       };
-      device = {
-        name = "epic-mouse-v1";
-        sensitivity = -0.5;
-      };
+      #device = {
+      #  name = "epic-mouse-v1";
+      #  sensitivity = -0.5;
+      #};
 
       gestures = {
         workspace_swipe = false;
@@ -88,7 +92,7 @@ in {
         rounding = 4;
         active_opacity = 0.85;
         inactive_opacity = 0.75;
-        
+
         blur = {
           enabled = true;
           size = 12;
@@ -109,14 +113,12 @@ in {
         };
       };
 
-      mod = "SUPER";
-
-      bindl = {
+      bindl = [
         ", switch:on:Lid, exec:hyprctl keyword monitor \"eDP-1, disable\""
         ", switch:off:Lid, exec:hyprctl keyword monitor \"eDP-1, enable\""
-      };
+      ];
 
-      bind = {
+      bind = [
         "${mod}, R, exec, cd /home/${username}/Pictures/misc/wallpaper-rotation && ./getrandomwallpaper.sh && swww img /home/${username}/Pictures/misc/wallpaper-rotation/wallpaper.png && cd"
         "${mod}, L, exec, hyprlock"
         "${mod}, O, exec, killall -SIGUSR1 waybar"
@@ -155,16 +157,16 @@ in {
         "${mod} SHIFT, S, movetoworkspace, special:magic"
         "${mod}, mouse_down, workspace, e+1"
         "${mod}, mouse_up, workspace, e-1"
-      };
+      ];
 
-      bindm = {
+      bindm = [
         "${mod}, mouse:272, movewindow"
         "${mod}, mouse:273, resizewindow"
-      };
+      ];
 
-      unbind = {
+      unbind = [
         "ALT, 0"
-      };
+      ];
 
       # bindel = {
       #   ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
@@ -204,7 +206,7 @@ in {
           "fadeLayersOut, 1, 1.39, almostLinear"
           "workspaces, 1, 1.94, almostLinear, fade"
           "workspacesIn, 1, 1.21, almostLinear, fade"
-          "workspacesOut, 1, 1.94, almostLinear, fade" 
+          "workspacesOut, 1, 1.94, almostLinear, fade"
         ];
       };
 

@@ -1,6 +1,4 @@
-{ username, ... }:
-
-{
+{username, ...}: let
   colorBackground = "rgba(114424FF)";
   colorPassBorder = "rgba(66FFCCBB)";
   colorPassField = "rgba(229944AA)";
@@ -13,7 +11,7 @@
   colorWeather = "rgba(229944AA)";
   colorWallpaperBorder = "rgba(229944AA)";
   fontFamily = "icomoon-feather, Monospace";
-  
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -35,18 +33,18 @@
           vibrancy_darkness = 0.25;
         }
       ];
-    #   image = [
-    #     {
-    #       path = "/home/${username}/.config/face.jpg";
-    #       size = 150;
-    #       border_size = 4;
-    #       border_color = "rgb(0C96F9)";
-    #       rounding = -1; # Negative means circle
-    #       position = "0, 200";
-    #       halign = "center";
-    #       valign = "center";
-    #     }
-    #   ];
+      #   image = [
+      #     {
+      #       path = "/home/${username}/.config/face.jpg";
+      #       size = 150;
+      #       border_size = 4;
+      #       border_color = "rgb(0C96F9)";
+      #       rounding = -1; # Negative means circle
+      #       position = "0, 200";
+      #       halign = "center";
+      #       valign = "center";
+      #     }
+      #   ];
       input-field = [
         {
           size = "250, 50";
@@ -65,7 +63,7 @@
           outline_thickness = 3;
           placeholder_text = "No Bitches?!";
           hide_input = false;
-        #   shadow_passes = 2;
+          #   shadow_passes = 2;
         }
       ];
 
@@ -89,8 +87,8 @@
           halign = "center";
           valign = "top";
           monitor = "";
-          }
-          {
+        }
+        {
           text = "cmd[update:1000] echo \"<b> $(date +'%H:%M:%S')\" </b>";
           color = ${colorTime};
           font_size = 94;
@@ -99,8 +97,8 @@
           halign = "center";
           valign = "center";
           monitor = "";
-          }
-          {
+        }
+        {
           text = "cmd[update:1000] echo \"<b> $(uptime -p)\" </b>";
           color = ${colorUptime};
           font_size = 24;
@@ -109,8 +107,8 @@
           halign = "right";
           valign = "bottom";
           monitor = "";
-          }
-          {
+        }
+        {
           text = " ${username}";
           color = ${colorUser};
           font_size = 18;
