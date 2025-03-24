@@ -143,27 +143,27 @@ in
       mbit="picocom -b 115200 -c -d 8 --imap lfcrlf";
       ghidras="_JAVA_AWT_WM_NONREPARENTING=1 ghidra";
     };
-    #history.size = 10000;
-    #initExtra=''
-    #  macchina | sed "s/\( Type1ProductConfigId\| 103C_5335M8\)//g" | sed "s/ 13-/ 13-bf0xxx/g"| sed "s/13-bf0xxxbf0xxx/13-bf0xxx/g"
-    #  echo
-    #  df -hT -t ext4 -t fuseblk | grep -v '/boot'
-    #'';
+    history.size = 10000;
+    initExtra=''
+      macchina | sed "s/\( Type1ProductConfigId\| 103C_5335M8\)//g" | sed "s/ 13-/ 13-bf0xxx/g"| sed "s/13-bf0xxxbf0xxx/13-bf0xxx/g"
+      echo
+      df -hT -t ext4 -t fuseblk | grep -v '/boot'
+    '';
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "zsh-autosuggestions" ];
+    #  plugins = [ "git" "thefuck" "zsh-autosuggestions" ];
       theme = "af-magic";
     };
-    #plugins = [
-    #  {
-    #    name = pkgs.zsh-autosuggestions.pname;
-    #    src = pkgs.zsh-autosuggestions.src;
-    #  }
-    #  {
-    #    name = pkgs.git.pname;
-    #    src = pkgs.git.src;
-    #  }
-    #];
+    plugins = [
+      {
+        name = pkgs.zsh-autosuggestions.pname;
+        src = pkgs.zsh-autosuggestions.src;
+      }
+      {
+        name = pkgs.git.pname;
+        src = pkgs.git.src;
+      }
+    ];
   };
 
   # Install firefox.

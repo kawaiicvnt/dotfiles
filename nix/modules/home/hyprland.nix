@@ -54,10 +54,6 @@ in {
       #  sensitivity = -0.5;
       #};
 
-      gestures = {
-        workspace_swipe = false;
-      };
-
       general = {
         "$modifier" = "SUPER";
         layout = "dwindle";
@@ -66,16 +62,22 @@ in {
         border_size = 2;
         resize_on_border = false;
         allow_tearing = false;
-        "col.active_border" = "rgba(66aaffaa) rgba(44ff99aa) rgba(ffaaffaa) 35deg";
+        "col.active_border" = "rgba(66aaff88) rgba(44ff9988) rgba(ffaaff88) 35deg";
         "col.inactive_border" = "rgba(66aaff55) rgba(44ff9955) rgba(ffaaff55) 35deg";
       };
 
       misc = {
+        force_default_wallpaper = -1;
+        disable_hyprland_logo = true;
+        font_family = "icomoon-feather, Monospace";
+        vrr = 1;
+        enable_swallow = true;
+        swallow_regex = ^((K|k)itty|.*\.(G|g)hostty|XTerm|UXTerm)$;
+        new_window_takes_over_fullscreen = 2;
         layers_hog_keyboard_focus = true;
         initial_workspace_tracking = 0;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = false;
-        disable_hyprland_logo = true;
         disable_splash_rendering = true;
       };
 
@@ -93,24 +95,41 @@ in {
         active_opacity = 0.85;
         inactive_opacity = 0.75;
 
+        dim_inactive = true;
+        dim_strength = 0.1;
+
         blur = {
           enabled = true;
           size = 12;
-          noise = 0.75;
+          noise = 0.5;
           passes = 2;
           xray = false;
-          brightness = 0.625;
+          brightness = 0.325;
           contrast = 0.625;
-          vibrancy = 0.1696;
-          vibrancy_darkness = 0.625;
+          vibrancy = 0.05;
+          vibrancy_darkness = 1;
         };
 
         shadow = {
           enabled = true;
           range = 4;
           render_power = 3;
-          color = "rgba(1a1a1aee)";
+          color = "rgba(1a1a1aaa)";
         };
+      };
+
+      gestures {
+        workspace_swipe = true;
+        workspace_swipe_touch = true;
+        workspace_swipe_min_fingers = true;
+      };
+
+      xwayland {
+        force_zero_scaling = true;
+      };
+
+      cursor {
+        inactive_timeout = 15;
       };
 
       bindl = [
