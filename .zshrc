@@ -199,6 +199,7 @@ else
 fi
 
 eval `keychain --eval ~/.ssh/id_ed25519`
+eval `keychain --eval ~/.ssh/id_uni`
 
 clear
 
