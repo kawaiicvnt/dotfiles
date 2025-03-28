@@ -118,17 +118,17 @@ in {
         };
       };
 
-      gestures {
+      gestures = {
         workspace_swipe = true;
         workspace_swipe_touch = true;
         workspace_swipe_min_fingers = true;
       };
 
-      xwayland {
+      xwayland = {
         force_zero_scaling = true;
       };
 
-      cursor {
+      cursor = {
         inactive_timeout = 15;
       };
 

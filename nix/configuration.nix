@@ -8,9 +8,6 @@ let
   vscode-extensions = (import ./modules/packages/vscode.nix) { pkgs = pkgs; lib = lib; };
   imports = [
     ./hosts/umreon/variables.nix
-    ./modules/home/hyprland.nix
-    ./modules/home/hyprlock.nix
-    ./modules/home/waybar.nix
   ];
 in
 {

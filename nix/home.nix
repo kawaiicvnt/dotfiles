@@ -1,5 +1,13 @@
 { config, pkgs, ... }:
 
+let
+  imports = [
+    ./hosts/umreon/variables.nix
+    ./modules/home/hyprland.nix
+    ./modules/home/hyprlock.nix
+    ./modules/home/waybar.nix
+  ];
+in
 {
   home.username = "evie";
   home.homeDirectory = "/home/evie";
@@ -28,6 +36,7 @@
     };
     history.size = 10000;
     initExtra=''
+      clear
       macchina | sed "s/\( Type1ProductConfigId\| 103C_5335M8\)//g" | sed "s/ 13-/ 13-bf0xxx/g"| sed "s/13-bf0xxxbf0xxx/13-bf0xxx/g"
       echo
       df -hT -t ext4 -t fuseblk | grep -v '/boot'
