@@ -7,10 +7,19 @@
 let
   vscode-extensions = (import ./modules/packages/vscode.nix) { pkgs = pkgs; lib = lib; };
   imports = [
-    ./hosts/umreon/variables.nix
+    ./hosts/umbreon/variables.nix
   ];
 in
 {
+  
+  #imports =
+  #  [
+  #    (import ./hosts/umbreon/variables.nix)
+  #    (import ./modules/home/hyprland.nix)
+  #    (import ./modules/home/hyprlock.nix)
+  #    (import ./modules/home/waybar.nix)
+  #  ];
+  
   # Enable Bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -94,6 +103,8 @@ in
 
   users.defaultUserShell = pkgs.zsh;
 
+  #home-manager.users.evie = "./home.nix";
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.evie = {
     isNormalUser = true;
@@ -140,27 +151,27 @@ in
       mbit="picocom -b 115200 -c -d 8 --imap lfcrlf";
       ghidras="_JAVA_AWT_WM_NONREPARENTING=1 ghidra";
     };
-    history.size = 10000;
-    initExtra=''
-      macchina | sed "s/\( Type1ProductConfigId\| 103C_5335M8\)//g" | sed "s/ 13-/ 13-bf0xxx/g"| sed "s/13-bf0xxxbf0xxx/13-bf0xxx/g"
-      echo
-      df -hT -t ext4 -t fuseblk | grep -v '/boot'
-    '';
-    oh-my-zsh = {
-      enable = true;
+    #history.size = 10000;
+    #initExtra=''
+    #  macchina | sed "s/\( Type1ProductConfigId\| 103C_5335M8\)//g" | sed "s/ 13-/ 13-bf0xxx/g"| sed "s/13-bf0xxxbf0xxx/13-bf0xxx/g"
+    #  echo
+    #  df -hT -t ext4 -t fuseblk | grep -v '/boot'
+    #'';
+    #ohMyZsh = {
+    #  enable = true;
     #  plugins = [ "git" "thefuck" "zsh-autosuggestions" ];
-      theme = "af-magic";
-    };
-    plugins = [
-      {
-        name = pkgs.zsh-autosuggestions.pname;
-        src = pkgs.zsh-autosuggestions.src;
-      }
-      {
-        name = pkgs.git.pname;
-        src = pkgs.git.src;
-      }
-    ];
+    #  theme = "af-magic";
+    #};
+    #plugins = [
+    #  {
+    #    name = pkgs.zsh-autosuggestions.pname;
+    #    src = pkgs.zsh-autosuggestions.src;
+    #  }
+    #  {
+    #    name = pkgs.git.pname;
+    #    src = pkgs.git.src;
+    #  }
+    #];
   };
 
   # Install firefox.
