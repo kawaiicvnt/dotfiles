@@ -5,17 +5,13 @@
 
   # Hyprland Settings
   extraMonitorSettings = ''
-    monitor=desc:Samsung Display Corp. 0x4166, 2880x1800@60, 1920x370, 1.5, bitdepth, 10
-    monitor=desc:Samsung Electric Company SAMSUNG, 3840x2160@60, 3840x0, 1.5
-    monitor=desc:Chimei Innolux Corporation 0x14C9, 1920x1080@60, 1920x490, 1
-    monitor=desc:Dell Inc. DELL U2421E JZVVBH3, 1920x1200@60, 0x370, 1
+    desc:Samsung Display Corp. 0x4166, 2880x1800@60, 1920x370, 1.5, bitdepth, 10
+    desc:Samsung Electric Company SAMSUNG, 3840x2160@60, 3840x0, 1.5
+    desc:Chimei Innolux Corporation 0x14C9, 1920x1080@60, 1920x490, 1
+    desc:Dell Inc. DELL U2421E JZVVBH3, 1920x1200@60, 0x370, 1
   '';
 
-  # Waybar Settings
-  clock24h = true;
-
   # Program Options
-  browser = "firefox"; # Set Default Browser (google-chrome-stable for google-chrome)
   terminal = "kitty"; # Set Default System Terminal
   fileManager = "dolphin"; # Set Default File Manager
   menu = "wofi --show drun"; # Set Default Menu

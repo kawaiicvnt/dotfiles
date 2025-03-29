@@ -1,15 +1,20 @@
 {
   pkgs,
   host,
-  username,
   config,
   ...
 }: let
   inherit
-    (import ../../../hosts/${host}/variables.nix)
+    (import ../../local.nix)
+    username
+    host
+    ;
+  inherit
+    (import ../../hosts/${host}/variables.nix)
     extraMonitorSettings
     ;
   mod = "SUPER";
+  terminal = "kitty";
   fileManager = "dolphin";
   menu = "rofi -show dmenu";
 in {
@@ -72,7 +77,7 @@ in {
         font_family = "icomoon-feather, Monospace";
         vrr = 1;
         enable_swallow = true;
-        swallow_regex = ^((K|k)itty|.*\.(G|g)hostty|XTerm|UXTerm)$;
+        swallow_regex = "^((K|k)itty|.*\\.(G|g)hostty|XTerm|UXTerm)$";
         new_window_takes_over_fullscreen = 2;
         layers_hog_keyboard_focus = true;
         initial_workspace_tracking = 0;
@@ -133,15 +138,17 @@ in {
       };
 
       bindl = [
-        ", switch:on:Lid, exec:hyprctl keyword monitor \"eDP-1, disable\""
-        ", switch:off:Lid, exec:hyprctl keyword monitor \"eDP-1, enable\""
+        ", switch:on:Lid, exec, hyprctl keyword monitor \"eDP-1, disable\""
+        ", switch:off:Lid, exec, hyprctl keyword monitor \"eDP-1, enable\""
       ];
 
       bind = [
+        "${mod}, Q, exec, kitty"
+        "${mod}, return, exec, kitty"
         "${mod}, R, exec, cd /home/${username}/Pictures/misc/wallpaper-rotation && ./getrandomwallpaper.sh && swww img /home/${username}/Pictures/misc/wallpaper-rotation/wallpaper.png && cd"
         "${mod}, L, exec, hyprlock"
         "${mod}, O, exec, killall -SIGUSR1 waybar"
-        "${mod} SHIFT, T, exec, kill -9 $(ps aux | grep waybar | grep -v grep | awk '{print $2}') ; waybar -c $HOME/.config/waybar/config.jsonc"
+        "${mod} SHIFT, T, exec, kill -9 $(ps aux | grep -e '[0-9]:[0-9]\\{2\\} waybar$' | grep -v grep | awk '{print $2}') ; waybar"
         "${mod}, E, exec, ${fileManager}"
         "${mod}, tab, togglefloating"
         "${mod}, D, exec, ${menu}"

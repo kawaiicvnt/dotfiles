@@ -6,259 +6,259 @@
   ...
 }: let
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
+  inherit (import ../../local.nix) host username;
   inherit (import ../../hosts/${host}/variables.nix) clock24h;
 in
-  with lib; {
-    # Configure & Theme Waybar
-    programs.waybar = {
-      enable = true;
-      package = pkgs.waybar;
-      settings = [
-        {
-          layer = "bottom";
-          position = "top";
-          height = 30;
-          spacing = 0;
-          margin-top = 5;
-          margin-bottom = 5;
-          margin-left = 5;
-          modules-center = ["hyprland/workspaces"];
-          modules-left = [
-            "clock"
-            "battery"
-            "idle_inhibitor"
-        	"hyprland/workspaces"
-        	"hyprland/scratchpad"
-	        "custom/rot-0"
-        	"custom/rot-180"
-          ];
-          modules-right = [
-            "pulseaudio"
-            "network"
-            "bluetooth"
-            "power-profiles-daemon"
-            "cpu"
-            "memory"
-            "temperature"
-            "backlight"
-            "sway/language"
-            "hyprland/language"
-            "tray"
-          ];
+{
+  # Configure & Theme Waybar
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar;
+    settings = [
+      {
+        layer = "bottom";
+        position = "top";
+        height = 30;
+        spacing = 0;
+        margin-top = 5;
+        margin-bottom = 5;
+        margin-left = 5;
+        modules-center = ["hyprland/window"];
+        modules-left = [
+          "clock"
+          "battery"
+          "idle_inhibitor"
+          "hyprland/workspaces"
+          "hyprland/scratchpad"
+          "custom/rot-0"
+          "custom/rot-180"
+        ];
+        modules-right = [
+          "pulseaudio"
+          "network"
+          "bluetooth"
+          "power-profiles-daemon"
+          "cpu"
+          "memory"
+          "temperature"
+          "backlight"
+         # "sway/language"
+          "hyprland/language"
+          "tray"
+        ];
 
-          "hyprland/workspaces" = {
-            format = "{name}";
-            # format-icons = {
-            #   default = " ";
-            #   active = " ";
-            #   urgent = " ";
-            # };
-            on-scroll-up = "hyprctl dispatch workspace e+1";
-            on-scroll-down = "hyprctl dispatch workspace e-1";
+        "hyprland/workspaces" = {
+          format = "{name}";
+          # format-icons = {
+          #   default = " ";
+          #   active = " ";
+          #   urgent = " ";
+          # };
+          on-scroll-up = "hyprctl dispatch workspace e+1";
+          on-scroll-down = "hyprctl dispatch workspace e-1";
+        };
+        "clock" = {
+          format =
+            if clock24h == true
+            then '' {:L%H:%M}''
+            else '' {:L%I:%M %p}'';
+          tooltip = true;
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = "{:%Y-%m-%d %H:%M}";
+        };
+        "hyprland/window" = {
+          max-length = 50;
+          separate-outputs = false;
+          rewrite = {
+            "" = " 🙈 No Bitches?! ";
           };
-          "clock" = {
-            format =
-              if clock24h == true
-              then '' {:L%H:%M}''
-              else '' {:L%I:%M %p}'';
-            tooltip = true;
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            format-alt = "{:%Y-%m-%d %H:%M}";
-          };
-          "hyprland/window" = {
-            max-length = 50;
-            separate-outputs = false;
-            rewrite = {
-              "" = " 🙈 No Bitches?! ";
-            };
-          };
-          "memory" = {
-            interval = 5;
-            format = " {}%";
-            tooltip = true;
-          };
-          "cpu" = {
-            interval = 5;
-            format = " {usage:2}%";
-            tooltip = true;
-          };
-          "disk" = {
-            format = " {free}";
-            tooltip = true;
-          };
-          "tray" = {
-            spacing = 10;
-          };
-          "pulseaudio" = {
-            format = "{icon} {volume}% {format_source}";
-            format-bluetooth = "{volume}% {icon} {format_source}";
-            format-bluetooth-muted = " {icon} {format_source}";
-            format-muted = " {format_source}";
-            format-source = " {volume}%";
-            format-source-muted = "";
-            format-icons = {
-              headphone = "";
-              hands-free = "";
-              headset = "";
-              phone = "";
-              portable = "";
-              car = "";
-              default = [
-                ""
-                ""
-                ""
-              ];
-            };
-            on-click = "sleep 0.1 && pavucontrol";
-          };
-          "custom/exit" = {
-            tooltip = false;
-            format = "";
-            on-click = "sleep 0.1 && wlogout";
-          };
-          "custom/startmenu" = {
-            tooltip = false;
-            format = "";
-            # exec = "rofi -show drun";
-            on-click = "sleep 0.1 && rofi-launcher";
-          };
-          "custom/hyprbindings" = {
-            tooltip = false;
-            format = "󱕴";
-            on-click = "sleep 0.1 && list-keybinds";
-          };
-          "idle_inhibitor" = {
-            format = "{icon}";
-            format-icons = {
-              activated = "";
-              deactivated = "";
-            };
-            tooltip = "true";
-          };
-          "custom/notification" = {
-            tooltip = false;
-            format = "{icon} {}";
-            format-icons = {
-              notification = "<span foreground='red'><sup></sup></span>";
-              none = "";
-              dnd-notification = "<span foreground='red'><sup></sup></span>";
-              dnd-none = "";
-              inhibited-notification = "<span foreground='red'><sup></sup></span>";
-              inhibited-none = "";
-              dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-              dnd-inhibited-none = "";
-            };
-            return-type = "json";
-            exec-if = "which swaync-client";
-            exec = "swaync-client -swb";
-            on-click = "sleep 0.1 && task-waybar";
-            escape = true;
-          };
-          "custom/rot-0" = {
-            tooltip = false;
-            format = "";
-            on-click = "sleep 0.1 && hyprctl dispatch rotate 0";
-          };
-          "custom/rot-90" = {
-            tooltip = false;
-            format = "";
-            on-click = "sleep 0.1 && hyprctl dispatch rotate 90";
-          };
-          "battery" = {
-            states = {
-              warning = 30;
-              critical = 15;
-            };
-            format = "{icon} {capacity}%";
-            format-charging = "󰂄 {capacity}%";
-            format-plugged = "󱘖 {capacity}%";
-            format-icons = [
-              "󰁺"
-              "󰁻"
-              "󰁼"
-              "󰁽"
-              "󰁾"
-              "󰁿"
-              "󰂀"
-              "󰂁"
-              "󰂂"
-              "󰁹"
+        };
+        "memory" = {
+          interval = 5;
+          format = " {}%";
+          tooltip = true;
+        };
+        "cpu" = {
+          interval = 5;
+          format = " {usage:2}%";
+          tooltip = true;
+        };
+        "disk" = {
+          format = " {free}";
+          tooltip = true;
+        };
+        #"tray" = {
+        #  spacing = 10;
+        #};
+        "pulseaudio" = {
+          format = "{icon} {volume}% {format_source}";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = " {volume}%";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [
+              ""
+              ""
+              ""
             ];
-            on-click = "";
-            tooltip = false;
           };
-          "backlight" = {
-            format = "{icon} {percent}%";
-            format-icons = [""
-                            ""
-                            ""
-                            ""
-                            ""
-                            ""
-                            ""
-                            ""
-                            ""
-                            ];
-            tooltip = false;
+          on-click = "sleep 0.1 && pavucontrol";
+        };
+        "custom/exit" = {
+          tooltip = false;
+          format = "";
+          on-click = "sleep 0.1 && wlogout";
+        };
+        "custom/startmenu" = {
+          tooltip = false;
+          format = "";
+          # exec = "rofi -show drun";
+          on-click = "sleep 0.1 && rofi-launcher";
+        };
+        "custom/hyprbindings" = {
+          tooltip = false;
+          format = "󱕴";
+          on-click = "sleep 0.1 && list-keybinds";
+        };
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
           };
-          "temperature" = {
-            format = " {temp}°C";
-            tooltip = false;
+          tooltip = "true";
+        };
+        "custom/notification" = {
+          tooltip = false;
+          format = "{icon} {}";
+          format-icons = {
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = "";
           };
-          "power-profiles-daemon" = {
-            format = "{icon} {profile}";
-            format-icons = {
-              balanced = "";
-              performance = "";
-              powersave = "";
-            };
-            tooltip = false;
+          return-type = "json";
+          exec-if = "which swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "sleep 0.1 && task-waybar";
+          escape = true;
+        };
+        "custom/rot-0" = {
+          tooltip = false;
+          format = "";
+          on-click = "sleep 0.1 && hyprctl dispatch rotate 0";
+        };
+        "custom/rot-90" = {
+          tooltip = false;
+          format = "";
+          on-click = "sleep 0.1 && hyprctl dispatch rotate 90";
+        };
+        "battery" = {
+          states = {
+            warning = 30;
+            critical = 15;
           };
-          "bluetooth" = {
-            format = "{icon} {device}";
-            format-icons = {
-              connected = "C";
-              disconnected = "D";
-            };
-            tooltip = true;
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󱘖 {capacity}%";
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+          on-click = "";
+          tooltip = false;
+        };
+        "backlight" = {
+          format = "{icon} {percent}%";
+          format-icons = [""
+                          ""
+                          ""
+                          ""
+                          ""
+                          ""
+                          ""
+                          ""
+                          ""
+                          ];
+          tooltip = false;
+        };
+        "temperature" = {
+          format = " {temp}°C";
+          tooltip = false;
+        };
+        "power-profiles-daemon" = {
+          format = "{icon} {profile}";
+          format-icons = {
+            balanced = "";
+            performance = "";
+            powersave = "";
           };
-          "network" = {
-            format-icons = [
-              "󰤯"
-              "󰤟"
-              "󰤢"
-              "󰤥"
-              "󰤨"
-            ];
-            format-ethernet = " {bandwidthDownOctets}";
-            format-wifi = "{icon} {signalStrength}% | {essid}";
-            format-linked = "{ifname} (No IP)";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
-            format-disconnected = "󰤮";
-            tooltip = true;
-            tooltip-format = "Net: {gwaddr}/{cidr}\nVia: {ifname} on {essid}\nIP: {ipaddr}";
-            max-length = 30;
+          tooltip = false;
+        };
+        "bluetooth" = {
+          format = "{device_alias}";
+          format-connected = "C {device_alias}";
+          format-disconnected = "D";
+          format-off = "N";
+          tooltip = true;
+        };
+        "network" = {
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          format-ethernet = " {bandwidthDownOctets}";
+          format-wifi = "{icon} {signalStrength}% | {essid}";
+          format-linked = "{ifname} (No IP)";
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
+          format-disconnected = "󰤮";
+          tooltip = true;
+          tooltip-format = "Net: {gwaddr}/{cidr}\nVia: {ifname} on {essid}\nIP: {ipaddr}";
+          max-length = 30;
+        };
+        "custom/media" = {
+          format = "{icon} {artist} - {title}";
+          return-type = "json";
+          max-length = 50;
+          exec-if = "which playerctl";
+          format-icons = {
+            play = "";
+            pause = "";
+            stop = "";
+            next = "";
+            previous = "";
           };
-          "custom/media" = {
-            format = "{icon} {artist} - {title}";
-            return-type = "json";
-            max-length = 50;
-            exec-if = "which playerctl";
-            format-icons = {
-              play = "";
-              pause = "";
-              stop = "";
-              next = "";
-              previous = "";
-            };
-            escape = true;
-            exec = "playerctl metadata --format '{{\"artist\":\"{artist}\",\"title\":\"{title}\",\"icon\":\"{icon}\"}}'";
-            tooltip = false;
-          };
-        }
-      ];
-      style = [ # = concatStrings [
-        ''
+          escape = true;
+          exec = "playerctl metadata --format '{{\"artist\":\"{artist}\",\"title\":\"{title}\",\"icon\":\"{icon}\"}}'";
+          tooltip = false;
+        };
+      } 
+    ];
+    style = lib.concatStrings [
+      ''
           * {
               /* `otf-font-awesome` is required to be installed for icons */
               font-family: "icomoon-feather, Monospace"; /*, FontAwesome, Roboto, Helvetica, Arial, sans-serif*/;
@@ -614,7 +614,7 @@ in
               background-color: #0069d4;
           }
 
-        ''
-      ];
-    };
-  }
+      ''
+    ];
+  };
+}

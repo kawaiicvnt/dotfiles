@@ -1,4 +1,9 @@
-{username, ...}: let
+{...}: let
+  inherit
+    (import ../../local.nix)
+    username
+    host
+    ;
   colorBackground = "rgba(114424FF)";
   colorPassBorder = "rgba(66FFCCBB)";
   colorPassField = "rgba(229944AA)";
@@ -56,10 +61,10 @@ in {
           dots_size = 0.25;
           dots_spacing = 0.2;
           fade_on_empty = false;
-          font_color = ${colorPassFont};
-          inner_color = ${colorPassField};
-          outer_color = ${colorPassBorder};
-          font_family = ${fontFamily};
+          font_color = colorPassFont;
+          inner_color = colorPassField;
+          outer_color = colorPassBorder;
+          font_family = fontFamily;
           outline_thickness = 3;
           placeholder_text = "No Bitches?!";
           hide_input = false;
@@ -69,40 +74,41 @@ in {
 
       label = [
         {
-          text = "cmd[update:18000000] echo \"<b> $(date +'%A, %-d %B %Y')\" </b>";
-          color = ${colorDate};
+          text = "cmd[update:18000000] echo \"<b> $(date +'%A, %-d %B %Y') </b>\"";
+          color = colorDate;
           font_size = 34;
-          font_family = ${fontFamily};
+          font_family = fontFamily;
           position = "0, -150";
           halign = "center";
           valign = "top";
           monitor = "";
         }
         {
-          text = "cmd[update:18000000] echo \"<b> $(date +'Week %U')\" </b>";
-          color = ${colorWeek};
+          text = "cmd[update:18000000] echo \"<b> $(date +'Week %U') </b>\"";
+          color = colorWeek;
           font_size = 24;
-          font_family = ${fontFamily};
+          font_family = fontFamily;
           position = "0, -250";
           halign = "center";
           valign = "top";
           monitor = "";
         }
         {
-          text = "cmd[update:1000] echo \"<b> $(date +'%H:%M:%S')\" </b>";
-          color = ${colorTime};
+          text = "cmd[update:1000] echo \"<b> $(date +'%H:%M:%S') </b>\"";
+          color = colorTime;
           font_size = 94;
-          font_family = ${fontFamily};
+          font_family = fontFamily;
           position = "0, 0";
           halign = "center";
           valign = "center";
           monitor = "";
         }
         {
-          text = "cmd[update:1000] echo \"<b> $(uptime -p)\" </b>";
-          color = ${colorUptime};
+          #text = "cmd[update:1000] echo \"<b> $(uptime) </b>\"";
+          text = "cmd[update:1000] echo \"<b> $(uptime | awk -F ',' '{print $1}' | awk '{$1=$2=e ; print}' | cut -c 3-) </b>\"";
+          color = colorUptime;
           font_size = 24;
-          font_family = ${fontFamily};
+          font_family = fontFamily;
           position = "0, 0";
           halign = "right";
           valign = "bottom";
@@ -110,9 +116,9 @@ in {
         }
         {
           text = " ${username}";
-          color = ${colorUser};
+          color = colorUser;
           font_size = 18;
-          font_family = ${fontFamily};
+          font_family = fontFamily;
           position = "0, 100";
           halign = "center";
           valign = "bottom";

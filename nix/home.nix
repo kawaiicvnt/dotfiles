@@ -1,14 +1,24 @@
 { config, pkgs, ... }:
 
 let
+  host = "umbreon";
   imports = [
-    ./hosts/umreon/variables.nix
+    ./hosts/${host}/variables.nix
     ./modules/home/hyprland.nix
     ./modules/home/hyprlock.nix
     ./modules/home/waybar.nix
   ];
 in
 {
+  imports = [
+    (import ./modules/home/hyprland.nix)
+    (import ./modules/home/hyprlock.nix)
+    (import ./modules/home/waybar.nix)
+  ];
+  #programs.kitty.enable = true;
+  wayland.windowManager.hyprland.enable = true;
+  programs.waybar.enable = true;
+  programs.hyprlock.enable = true;
   home.username = "evie";
   home.homeDirectory = "/home/evie";
   home.stateVersion = "25.05";
