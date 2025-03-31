@@ -217,6 +217,10 @@ alias i3l="xinit -- :0 vt2"
 alias ffmpreg="ffmpeg"
 alias factorio-steam="steam steam://rungameid/427520"
 alias mbit="picocom -b 115200 -c -d 8 --imap lfcrlf"
+alias pause="kill -STOP $\(pgrep -f \$1\)"
+alias cont="kill -CONT $\(pgrep -f \$1\)"
+alias pauseall="killall -STOP"
+alias contall="killall -CONT"
 function killname(){ kill -9 $(ps -u evie a | grep $1 | grep -v grep | awk '{print $1}') }
 
 # This HAS to be at the END of the script. It's waiting for bg tasks to complete and sources their

@@ -43,6 +43,10 @@ in
       factorio-steam="steam steam://rungameid/427520";
       mbit="picocom -b 115200 -c -d 8 --imap lfcrlf";
       ghidras="_JAVA_AWT_WM_NONREPARENTING=1 ghidra";
+      pause="kill -STOP $(pgrep -f $1)";
+      cont="kill -CONT $(pgrep -f $1)";
+      pauseall="killall -STOP";
+      contall="killall -CONT";
     };
     history.size = 10000;
     initExtra=''
