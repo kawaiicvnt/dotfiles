@@ -201,6 +201,10 @@ fi
 eval `keychain --eval ~/.ssh/id_ed25519`
 eval `keychain --eval ~/.ssh/id_uni`
 
+# NDS / Switch toolchain
+export DEVKITARM="/opt/devkitpro/devkitARM"
+export DEVKITPRO="/opt/devkitpro"
+
 clear
 
 # Last, but not least, my greeting thingy
