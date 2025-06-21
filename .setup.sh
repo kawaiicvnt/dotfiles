@@ -25,7 +25,7 @@ sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
 # install pipewire and audio stuff
 sudo pacman -Sy pipewire pipewire-pulse alsa alsa-utils pavucontrol
 
-paru -Sy smart-playerctl-git uwufetch oh-my-zsh-git volumectl avizo
+paru -Sy smart-playerctl-git uwufetch oh-my-zsh-git volumectl avizo hy3 hyprland-monitor-attached devkitpro 
 
 # make github directory and clone needed repos
 mkdir -p $HOME/.git/github/
