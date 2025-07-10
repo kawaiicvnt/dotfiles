@@ -9,6 +9,7 @@
 #set $mod Mod1
 # super key
 set $mod Mod4
+set $modalt Mod1
 
 # xrandr settings:	UW: 1920x645 pos, TV: 0x645 pos, PORT: 4480x0 pos
 #exec --no-startup-id "wlr-randr --output eDP-1 --scale 1.5 --adaptive-sync enabled --custom-mode 2880x1800@60 --pos 0,0" 
@@ -84,8 +85,8 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec konsole
-bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec kitty
+bindsym $mod+Return exec ghostty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -186,17 +187,17 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "0"
-set $ws11 "A"
-set $ws12 "B"
-set $ws13 "C"
-set $ws14 "D"
-set $ws15 "E"
-set $ws16 "F"
-set $ws17 "G"
-set $ws18 "H"
-set $ws19 "I"
-set $ws20 "J"
+set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -209,16 +210,16 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-bindsym $mod+Ctrl+1 workspace $ws11
-bindsym $mod+Ctrl+2 workspace $ws12
-bindsym $mod+Ctrl+3 workspace $ws13
-bindsym $mod+Ctrl+4 workspace $ws14
-bindsym $mod+Ctrl+5 workspace $ws15
-bindsym $mod+Ctrl+6 workspace $ws16
-bindsym $mod+Ctrl+7 workspace $ws17
-bindsym $mod+Ctrl+8 workspace $ws18
-bindsym $mod+Ctrl+9 workspace $ws19
-bindsym $mod+Ctrl+0 workspace $ws20
+bindsym $modalt+1 workspace $ws11
+bindsym $modalt+2 workspace $ws12
+bindsym $modalt+3 workspace $ws13
+bindsym $modalt+4 workspace $ws14
+bindsym $modalt+5 workspace $ws15
+bindsym $modalt+6 workspace $ws16
+bindsym $modalt+7 workspace $ws17
+bindsym $modalt+8 workspace $ws18
+bindsym $modalt+9 workspace $ws19
+bindsym $modalt+0 workspace $ws20
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -231,16 +232,16 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-bindsym $mod+Ctrl+Shift+1 move container to workspace $ws11
-bindsym $mod+Ctrl+Shift+2 move container to workspace $ws12
-bindsym $mod+Ctrl+Shift+3 move container to workspace $ws13
-bindsym $mod+Ctrl+Shift+4 move container to workspace $ws14
-bindsym $mod+Ctrl+Shift+5 move container to workspace $ws15
-bindsym $mod+Ctrl+Shift+6 move container to workspace $ws16
-bindsym $mod+Ctrl+Shift+7 move container to workspace $ws17
-bindsym $mod+Ctrl+Shift+8 move container to workspace $ws18
-bindsym $mod+Ctrl+Shift+9 move container to workspace $ws19
-bindsym $mod+Ctrl+Shift+0 move container to workspace $ws20
+bindsym $modalt+Shift+1 move container to workspace $ws11
+bindsym $modalt+Shift+2 move container to workspace $ws12
+bindsym $modalt+Shift+3 move container to workspace $ws13
+bindsym $modalt+Shift+4 move container to workspace $ws14
+bindsym $modalt+Shift+5 move container to workspace $ws15
+bindsym $modalt+Shift+6 move container to workspace $ws16
+bindsym $modalt+Shift+7 move container to workspace $ws17
+bindsym $modalt+Shift+8 move container to workspace $ws18
+bindsym $modalt+Shift+9 move container to workspace $ws19
+bindsym $modalt+Shift+0 move container to workspace $ws20
 
 # PASSTHROUGH MODE #
 mode  "Passthrough" {
@@ -373,7 +374,7 @@ mode "Resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "Resize"
+#bindsym $mod+r mode "Resize"
 
 
 ##### COLORS #####
@@ -419,14 +420,14 @@ bindsym $mod+Shift+t exec --no-startup-id "killall waybar ; waybar -c .config/wa
 #make polybar start in both screens
 #exec_always --no-startup-id "bash $HOME/.config/sway/polybarone.sh"
 #exec_always --no-startup-id "polybar --reload main -c $HOME/.config/polybar/blocks/config.ini &"
-exec_always --no-startup-id "waybar -c .config/waybar/config.jsonc"
+exec --no-startup-id "waybar -c .config/waybar/config.jsonc"
 
 ##### XRANDR - MONITOR SETUP #####
 #exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --primary --mode 2560x1080 --rate 75 --pos 1920x645 --rotate normal --output DP-0 --off --output HDMI-1-1 --mode 1920x1080 --pos 0x645 --rotate normal --output DP-1 --mode 1920x1080 --rate 50 --pos 4480x0 --rotate left --output DVI-I-1-1 --off --output VGA-1-1 --off
-set $firstMonitor eDP-1
-set $secondMonitor DP-1
-set $thirdMonitor DP-2
-
+set $emmon eDP-1
+set $4kmon "Samsung Electric Company SAMSUNG Unknown"
+set $dlmon "Dell Inc. DELL U2421E JZVVBH3"
+set $lgmon "LG Electronics LG HDR WFHD 0x0009F6A1"
 ##### FEH - WALLPAPER #####
 # I think it goes with xrandr monitor order
 #exec --no-startup-id imv --bg-scale /home/shared/Pictures/wallpapers/kyubey.jpg
@@ -441,26 +442,26 @@ set $thirdMonitor DP-2
 #exec --no-startup-id "bash $HOME/.config/i3/xinput.sh"
 
 ##### WORKSPACE - MONITOR SETTINGS #####
-workspace $ws1 output $firstMonitor
-workspace $ws2 output $firstMonitor
-workspace $ws3 output $firstMonitor
-workspace $ws4 output $firstMonitor
-workspace $ws5 output $firstMonitor
-workspace $ws6 output $firstMonitor
-workspace $ws7 output $firstMonitor
-workspace $ws8 output $firstMonitor
-workspace $ws9 output $firstMonitor
-workspace $ws10 output $firstMonitor
-workspace $ws11 output $secondMonitor
-workspace $ws12 output $secondMonitor
-workspace $ws13 output $secondMonitor
-workspace $ws14 output $secondMonitor
-workspace $ws15 output $secondMonitor
-workspace $ws16 output $thirdMonitor
-workspace $ws17 output $thirdMonitor
-workspace $ws18 output $thirdMonitor
-workspace $ws19 output $thirdMonitor
-workspace $ws20 output $thirdMonitor
+workspace $ws1  output $emmon
+workspace $ws2  output $emmon
+workspace $ws3  output $emmon
+workspace $ws4  output $emmon
+workspace $ws5  output $emmon
+workspace $ws6  output $emmon
+workspace $ws7  output $emmon
+workspace $ws8  output $emmon
+workspace $ws9  output $emmon
+workspace $ws10 output $4kmon 
+workspace $ws11 output $4kmon
+workspace $ws12 output $4kmon
+workspace $ws13 output $4kmon
+workspace $ws14 output $4kmon
+workspace $ws15 output $4kmon
+workspace $ws16 output $lgmon
+workspace $ws17 output $lgmon
+workspace $ws18 output $lgmon
+workspace $ws19 output $dlmon
+workspace $ws20 output $dlmon
 
 # assign default workspaces
 assign [class="Spotify"] $ws7
@@ -473,8 +474,8 @@ for_window [class="Minecraft"] move to workspace $ws2
 # floating windows
 for_window [app_id="nomacs"] floating enable
 for_window [app_id="galculator"] floating enable
-for_window [app_id="(?!kitty)"] opacity 0.95
-for_window [app_id="kitty"] opacity 1
+for_window [app_id="(?!(kitty)|(firefox))"] opacity 0.95
+for_window [app_id="((kitty)|(firefox))"] opacity 1
 for_window [class="Microsoft-edge"] opacity 0.99
 for_window [class="Synthesizer V Studio Basic"] opacity 1
 for_window [class="jetbrains-rustrover"] opacity 0.98
@@ -558,15 +559,15 @@ output * background /home/evie/Pictures/miscellanious/wallpaper-rotation/wallpap
 
 output "Samsung Display Corp. 0x4166 Unknown" {
 	mode 2880x1800
-	pos 1920 150
-	scale 1.3
+	pos 6320 720
+	scale 1.5
 	adaptive_sync enabled
 	render_bit_depth 10
 }
 
 output "Chimei Innolux Corporation 0x14C9 Unknown" {
 	mode 1920x1080
-	pos 2560 0
+	pos 6320 720
 	scale 1
 	adaptive_sync enabled
 	render_bit_depth 8
@@ -574,21 +575,22 @@ output "Chimei Innolux Corporation 0x14C9 Unknown" {
 
 output "Dell Inc. DELL U2421E JZVVBH3" {
 	mode 1920x1200
-	pos 0 200
+	pos 5120 0
 	scale 1
 	adaptive_sync enabled
+	transform 270
 }
 
 output "Samsung Electric Company SAMSUNG Unknown" {
 	mode 3840x2160
-	pos 4136 0
-	scale 1.3
+	pos 2560 370
+	scale 1.5
 	adaptive_sync enabled
 }
 output "LG Electronics LG HDR WFHD 0x0009F6A1" {
-	mode --custom 1600x675
-	pos 0 0
-	scale 0.625
+	mode 2560 1080
+	pos 0 360
+	scale 1
 	adaptive_sync enabled 
 }
 
