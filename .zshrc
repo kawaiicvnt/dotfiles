@@ -189,17 +189,17 @@ function start_agent {
 # Source SSH settings, if applicable
 
 if [ -f "$SSH_ENV" ]; then
-    . "$SSH_ENV" >/dev/null
+#    . "$SSH_ENV" >/dev/null
     #ps $SSH_AGENT_PID doesn't work under Cygwin
-    ps -ef | grep $SSH_AGENT_PID | grep ssh-agent$ >/dev/null || {
-        start_agent
-    }
+#    ps -ef | grep $SSH_AGENT_PID | grep ssh-agent$ >/dev/null || {
+#        start_agent
+#    }
 else
-    start_agent
+    #start_agent
 fi
 
-eval `keychain --eval ~/.ssh/id_ed25519`
-eval `keychain --eval ~/.ssh/id_uni`
+#eval `keychain --eval ~/.ssh/id_ed25519`
+#eval `keychain --eval ~/.ssh/id_uni`
 
 # NDS / Switch toolchain
 export DEVKITARM="/opt/devkitpro/devkitARM"
@@ -241,3 +241,4 @@ function killname(){ kill -9 $(ps -u evie a | grep $1 | grep -v grep | awk '{pri
 
 alias ghidras=_JAVA_AWT_WM_NONREPARENTING=1 ghidra
 PATH+=:~/.local/bin
+PATH+=:~/.cargo/bin
