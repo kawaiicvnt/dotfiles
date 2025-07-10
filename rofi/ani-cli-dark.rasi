@@ -1,0 +1,37 @@
+* {
+    background: #1e1e2e;
+    border: 0;
+    border-radius: 8px;
+    padding: 5px;
+    font-family: "monospace";
+    font-size: 14px;
+}
+
+window {
+    background-color: #1e1e2e;
+    border: 2px solid #89b4fa;
+}
+
+inputbar {
+    background-color: #313244;
+    border-radius: 4px;
+    padding: 8px;
+    color: #cdd6f4;
+}
+
+listview {
+    background-color: #1e1e2e;
+}
+
+element {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    padding: 5px;
+}
+
+element selected {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border-radius: 4px;
+}
+
