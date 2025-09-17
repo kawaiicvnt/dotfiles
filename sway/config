@@ -90,6 +90,8 @@ bindsym $mod+Shift+Return exec ghostty
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# force kil focused window
+bindsym $mod+Ctrl+Shift+q exec sh -c "kill -9 $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .pid')"
 
 # DMENU #
 
@@ -153,7 +155,10 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f		  fullscreen toggle
+bindsym $mod+Shift+f	  fullscreen toggle
+bindsym $mod+Ctrl+f	  fullscreen toggle
+bindsym $mod+Ctrl+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
