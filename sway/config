@@ -1,5 +1,4 @@
-
-
+include /etc/sway/config.d/*
 
 # i3 config file (v4)
 #
@@ -85,8 +84,8 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec kitty
-bindsym $mod+Return exec ghostty
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec ghostty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -245,16 +244,16 @@ bindsym $modalt+Shift+0 move container to workspace $ws20
 
 # PASSTHROUGH MODE #
 mode  "Passthrough" {
-	bindsym XF86AudioRaiseVolume 	exec --no-startup-id volumectl -u up 
-	bindsym XF86AudioLowerVolume 	exec --no-startup-id volumectl -u down
-	bindsym XF86AudioMute 		exec --no-startup-id volumectl toggle-mute
-	bindsym XF86AudioMicMute	exec --no-startup-id volumectl -m toggle-mute
+	bindsym XF86AudioRaiseVolume 	exec --no-startup-id amixer sset Master 5%+
+	bindsym XF86AudioLowerVolume 	exec --no-startup-id amixer sset Master 5%-
+	bindsym XF86AudioMute 		exec --no-startup-id amixer sset Master toggle
+	bindsym XF86AudioMicMute	exec --no-startup-id amixer sset Capture toggle
 	bindsym XF86AudioPlay 		exec --no-startup-id smart-playerctl play-pause
 	bindsym XF86AudioPause 		exec --no-startup-id smart-playerctl play-pause
 	bindsym XF86AudioNext 		exec --no-startup-id smart-playerctl next
 	bindsym XF86AudioPrev 		exec --no-startup-id smart-playerctl previous
-	bindsym XF86MonBrightnessUp 	exec --no-startup-id lightctl up
-	bindsym XF86MonBrightnessDown 	exec --no-startup-id lightctl down
+	bindsym XF86MonBrightnessUp 	exec --no-startup-id brightnessctl s 10%+
+	bindsym XF86MonBrightnessDown 	exec --no-startup-id brightnessctl s 10%-
 	bindsym $mod+Shift+Return 	exec konsole
 	bindsym $mod+Return 		exec kitty
         bindsym $mod+F12 		mode "default"
@@ -272,24 +271,23 @@ bindsym $mod+minus scratchpad show
 
 
 # AUDIO CONTROLS #
-bindsym XF86AudioRaiseVolume 	exec --no-startup-id volumectl -u up 
-bindsym XF86AudioLowerVolume 	exec --no-startup-id volumectl -u down
-bindsym XF86AudioMute 		exec --no-startup-id volumectl toggle-mute
-#bindsym XF86AudioMicMute	exec --no-startup-id volumectl -m toggle-mute
+bindsym XF86AudioRaiseVolume 	exec --no-startup-id amixer sset Master 5%+
+bindsym XF86AudioLowerVolume 	exec --no-startup-id amixer sset Master 5%-
+bindsym XF86AudioMute 		exec --no-startup-id amixer sset Master toggle
 
 #bindsym XF86AudioRaiseVolume 	exec --no-startup-id pactl set-sink-volume 2 +2% #increase sound volume
 #bindsym XF86AudioRaiseVolume 	exec --no-startup-id amixer sset Master 2%+ ; volumectl -u up
 #bindsym XF86AudioLowerVolume 	exec --no-startup-id pactl set-sink-volume 2 -2% #decrease sound volume
 #bindsym XF86AudioLowerVolume 	exec --no-startup-id amixer sset Master unmute 2%- ; volumectl -u down
 #bindsym XF86AudioMute 		exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
-#bindsym XF86AudioMute 		exec --no-startup-id amixer sset Master toggle ; volumectl toggle-mute
-bindsym XF86AudioMicMute	exec --no-startup-id amixer sset Capture toggle ; volume -m toggle-mute
+#bindsym XF86AudioMute 		exec --no-startup-id amixer sset Master toggle
+bindsym XF86AudioMicMute	exec --no-startup-id amixer sset Capture toggle
 bindsym XF86AudioPlay 		exec smart-playerctl play-pause
 bindsym XF86AudioPause 		exec smart-playerctl play-pause
 bindsym XF86AudioNext 		exec smart-playerctl next
 bindsym XF86AudioPrev 		exec smart-playerctl previous
-bindsym XF86MonBrightnessUp 	exec --no-startup-id lightctl +10%
-bindsym XF86MonBrightnessDown 	exec --no-startup-id lightctl -10%
+bindsym XF86MonBrightnessUp 	exec --no-startup-id brightnessctl s 10%+
+bindsym XF86MonBrightnessDown 	exec --no-startup-id brightnessctl s 10%-
 
 # screenshot
 bindsym --release $mod+Shift+p exec grim -g "$(slurp -d)" - | swappy -f -
@@ -474,7 +472,7 @@ for_window [class="Minecraft"] move to workspace $ws2
 # floating windows
 for_window [app_id="nomacs"] floating enable
 for_window [app_id="galculator"] floating enable
-for_window [app_id="(?!(kitty)|(firefox))"] opacity 0.95
+for_window [app_id="(?!(kitty)|(firefox))"] opacity 0.98
 for_window [app_id="((kitty)|(firefox))"] opacity 1
 for_window [class="Microsoft-edge"] opacity 0.99
 for_window [class="Synthesizer V Studio Basic"] opacity 1
@@ -552,10 +550,10 @@ input "1739:52941:SYNA32CF:00_06CB:CECD_Touchpad" {
 exec --no-startup-id "cd $HOME/Pictures/miscellanious/wallpaper-rotation/ ; ./get-random-wallpaper.sh ; cd $HOME"
 
 # Get random wallpaper
-bindsym $mod+Shift+r exec --no-startup-id "cd $HOME/Pictures/miscellanious/wallpaper-rotation/ ; ./get-random-wallpaper.sh ; cd $HOME ; swaymsg output eDP-1 background /home/evie/Pictures/miscellanious/wallpaper-rotation/wallpaper.png fill"
+bindsym $mod+Shift+r exec --no-startup-id "cd $HOME/Pictures/miscellanious/wallpaper-rotation/ ; ./get-random-wallpaper.sh ; cd $HOME ; swaymsg output eDP-1 background /home/kawaiicvnt/Pictures/miscellanious/wallpaper-rotation/wallpaper.png fill"
 
 
-output * background /home/evie/Pictures/miscellanious/wallpaper-rotation/wallpaper.png fill
+output * background /home/kawaiicvnt/Pictures/miscellanious/wallpaper-rotation/wallpaper.png fill
 
 output "Samsung Display Corp. 0x4166 Unknown" {
 	mode 2880x1800
