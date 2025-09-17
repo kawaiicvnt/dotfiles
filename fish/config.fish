@@ -9,6 +9,8 @@ if test $TERM = "xterm-kitty"
       alias ssh="kitty +kitten $(which ssh)"	
 end
 
+set -gxa PATH ~/.nix-profile/bin
+
 # alias ssh="TERM=xterm-256color $(which ssh)"
 
 alias ll="ls -l"
