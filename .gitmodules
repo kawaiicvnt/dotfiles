@@ -1,0 +1,6 @@
+[submodule "scripts/polybar-spotify"]
+	path = scripts/polybar-spotify
+	url = https://github.com/Jvanrhijn/polybar-spotify.git
+[submodule "scripts/polybar-browsermediacontrol"]
+	path = scripts/polybar-browsermediacontrol
+	url = https://github.com/haideralipunjabi/polybar-browsermediacontrol.git

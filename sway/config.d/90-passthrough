@@ -1,0 +1,16 @@
+mode  "Passthrough" {
+        bindsym XF86AudioRaiseVolume    exec --no-startup-id amixer sset Master 5%+
+        bindsym XF86AudioLowerVolume    exec --no-startup-id amixer sset Master 5%-
+        bindsym XF86AudioMute           exec --no-startup-id amixer sset Master toggle
+        bindsym XF86AudioMicMute        exec --no-startup-id amixer sset Capture toggle
+        bindsym XF86AudioPlay           exec --no-startup-id playerctl play-pause
+        bindsym XF86AudioPause          exec --no-startup-id playerctl play-pause
+        bindsym XF86AudioNext           exec --no-startup-id playerctl next
+        bindsym XF86AudioPrev           exec --no-startup-id playerctl previous
+        bindsym XF86MonBrightnessUp     exec --no-startup-id brightnessctl s 10%+
+        bindsym XF86MonBrightnessDown   exec --no-startup-id brightnessctl s 10%-
+        bindsym $mod+Shift+Return       exec konsole
+        bindsym $mod+Return             exec kitty
+        bindsym $mod+F12                mode "default"
+}
+bindsym $mod+F12 mode "Passthrough"
