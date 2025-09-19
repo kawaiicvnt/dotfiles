@@ -6,7 +6,7 @@ if status is-interactive
 end
 
 if test $TERM = "xterm-kitty"
-      alias ssh="kitty +kitten $(which ssh)"	
+      alias ssh="kitty +kitten ssh"	
 end
 
 set -gxa PATH ~/.nix-profile/bin
