@@ -3,23 +3,8 @@ Cringe on main ≖‿≖
 
 No support attached. Good luck have fun.
 
-sway + waybar configurations still in progress, but something working is up
+For HP Envy x360 13-bf0xxx with the ALC245 sound card, I had to set a boot override using hdajackretask. Specifically:
 
-.
+0x14 -> 0x90170110 -> Int,Int,Sp,OA,Uk,NP,1,F
 
-In the i3 directory are like 500 similar scripts.
-They are for my different machines/monitor configs.
-If you use multimonitor setups / detachable screen setups, modify the i3/toggletv.sh script. Don't ask me how, it's easy gl.
-
-AND REPLACE IN ALL CONFIG FILES MY USERNAME WITH YOURS. WHEREVER YOU SEE "evie" (´ω｀)
-
-NEEDED DEPENDACIES FOR:
-
-ZSH SHELL (.zshrc):
-https://github.com/zsh-users/zsh-syntax-highlighting
-
-POLYBAR MODULES (modules.ini):
-https://github.com/haideralipunjabi/polybar-browsermediacontrol  |  https://github.com/Jvanrhijn/polybar-spotify
-
-Make sure you have fixed the paths in the respective config / module files. Don't be cringe.
-
+Also, I had to switch to a software mixer. See wireplumber config.
