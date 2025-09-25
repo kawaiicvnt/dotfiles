@@ -1,0 +1,327 @@
+:root{
+    --dark-base: #161f25;
+    --dark-base-trans: #161f2599;
+    --dark-base-trans-1: #161f2533;
+    --light: #ff9d9d;
+    --light-trans: #ff9d9d99;
+    --light-trans-1: #ff9d9d22;
+    --light-selection: #dd8a8a;
+    --light-1: #995e5e;
+
+    /* expanded width of the sidebar. 
+    used for userChrome-static, and hover */
+    --sidebar-width: 250px;
+    /* initial width of the sidebar. 
+    advised not to change since tst css relies on this value*/
+    --sidebar-collapsed-width: 60px;
+
+    --dividers: 2px;
+
+    --tl-animation-duration: 200ms;
+    /*--tl-tab-background-gradient: */
+    /* uncomment and add gradient value for selected tab gradient*/
+
+    /******WINDOW CONTROL PLACEMENT VARS******/
+    --wc-vertical-shift: 18px;
+    /* larger value moves window controls down,*/
+    /* can be negative(moves controls up) */
+    /* Experiemntal: 55px if tabline visible, -25px if tabline hidden */
+    --wc-left-space: 15px; /* add space to the left of window controls*/
+    --wc-right-space: 18px; /* add space to the right of window controls*/
+    /* left-space shifts window-controls */
+    /* if you want to shift window controls to the left: positive value */
+    /* if you want to shift them to the right: smaller or negative value */
+    /* right-space shifts rest of the navbar (forward,backward,urlbar,etc.) to the right */
+    /* if you want to increase/decrease space between window-controls and navbars: */
+    /* set positive/smaller or negative value for right-space*/
+
+    /* set toolbar field background color when focused to dark-base */
+    --toolbar-field-focus-background-color: var(--dark-base) !important;
+}
+
+:root{
+    /*--toolbar-field-color: var(--light) !important;
+    --toolbar-field-background-color: var(--transparent)!important;*/
+}
+#main-menubar {
+    color: var(--light) !important;
+}
+
+:root:is([tabsintitlebar], [sizemode="fullscreen"]) {
+    --uc-window-control-width: 138px; /* Space reserved for window controls (Win10) */
+  /* Extra space reserved on both sides of the nav-bar to be able to drag the window */
+    --uc-window-drag-space-pre: 0px; /* left side*/
+    --uc-window-drag-space-post: 30px; /* right side*/}
+
+@media  (-moz-platform: windows-win7),
+        (-moz-platform: windows-win8){
+    :root:is([tabsintitlebar], [sizemode="fullscreen"]) {
+        --uc-window-control-width: 105px;   }
+}
+
+@media (-moz-gtk-csd-available) {
+    :root:is([tabsintitlebar],[sizemode="fullscreen"]) {
+        --uc-window-control-width: 84px;    }
+}
+@media (-moz-platform: macos){
+    :root:is([tabsintitlebar],[sizemode="fullscreen"]) {
+        --uc-window-control-width: 72px;    }
+}
+
+.titlebar-buttonbox, #window-controls{ color: var(--light) }
+
+:root[sizemode="fullscreen"] .titlebar-buttonbox-container{ 
+    display: none;
+}
+
+:root[sizemode="fullscreen"] #navigator-toolbox { 
+    position: relative;
+}
+
+:root #navigator-toolbox {
+    border-bottom: 1px solid var(--light-trans) !important;
+}
+
+:root[sizemode="fullscreen"] #TabsToolbar > .titlebar-buttonbox-container:last-child,
+:root[sizemode="fullscreen"] #window-controls{
+    position: absolute;
+    display: flex;
+    top: 0;
+    right:0;
+    height: 40px;
+    color: var(--light);
+}
+
+:root[sizemode="fullscreen"] #TabsToolbar > .titlebar-buttonbox-container:last-child,
+:root[uidensity="compact"][sizemode="fullscreen"] #window-controls{
+    height: 32px; }
+
+#nav-bar{
+    border-inline: var(--uc-window-drag-space-pre,0px) solid transparent;
+    border-inline-style: solid !important;
+    border-right-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-post,0px));
+    background-clip: border-box !important;}
+
+/* Rules for window controls on left layout */
+@media (-moz-gtk-csd-reversed-placement),
+       (-moz-platform: macos){
+    :root[tabsintitlebar="true"] #nav-bar{
+        border-inline-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-post,0px)) var(--uc-window-drag-space-pre,0px);   }
+    :root[sizemode="fullscreen"] #TabsToolbar > .titlebar-buttonbox-container:last-child,
+    :root[sizemode="fullscreen"] #window-controls{
+        right: unset;   }
+}
+
+/* This pref can be used to force window controls on left even if that is not normal behavior on your OS */
+@supports -moz-bool-pref("userchrome.force-window-controls-on-left.enabled"){
+    :root[tabsintitlebar="true"] #nav-bar{
+        border-inline-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-post,0px)) var(--uc-window-drag-space-pre,0px);   }
+    :root[sizemode="fullscreen"] #TabsToolbar > .titlebar-buttonbox-container:last-child,
+    :root[sizemode="fullscreen"] #window-controls{
+        right: unset;   }
+    .titlebar-buttonbox-container{
+        order: -1 !important;   }
+    .titlebar-buttonbox{
+        flex-direction: row-reverse;    }
+}
+
+
+
+:root[tabsintitlebar]{
+    --uc-toolbar-height: 40px;
+}
+:root[tabsintitlebar][uidensity="compact"]{
+    --uc-toolbar-height: 32px;}
+
+/*#TabsToolbar{
+    visibility: collapse !important;
+}*/
+
+:root[sizemode="fullscreen"] #TabsToolbar > :is(#window-controls,.titlebar-buttonbox-container){
+    visibility: visible !important;
+    z-index: 2;
+    fill: var(--light);
+}
+
+:root[sizemode="fullscreen"] #TabsToolbar.titlebar-buttonbox > .toolbarbutton-icon {
+    fill: var(--light) !important;
+    background-color: var(--light) !important;
+    color: var(--light) !important;
+    stroke: var(--light) !important;
+}
+
+:root:not([inFullscreen]) #nav-bar{
+    margin-top: calc(0px - var(--uc-toolbar-height,0px));
+    background-color: var(--light);
+}
+
+:root[tabsintitlebar] #toolbar-menubar[autohide="true"]{
+    min-height: unset !important;
+    height: var(--uc-toolbar-height,0px) !important;
+    position: relative;
+}
+
+#toolbar-menubar[autohide="false"]{
+    margin-bottom: var(--uc-toolbar-height,0px);
+    border-radius: 5px !important ;
+    border: var(--light-trans) !important;
+}
+
+:root[tabsintitlebar] #toolbar-menubar[autohide="true"] #main-menubar{
+    flex-grow: 1;
+    align-items: stretch;
+    background-color: var(--toolbar-bgcolor,--toolbar-non-lwt-bgcolor);
+    background-clip: padding-box;
+    border-image: linear-gradient(to left, transparent, var(--toolbar-bgcolor,--toolbar-non-lwt-bgcolor) 30px) 20 / 30px;
+}
+
+#toolbar-menubar:not([inactive]){ 
+    z-index: 2; }
+#toolbar-menubar[autohide="true"][inactive] > #menubar-items {
+    opacity: 0;
+    pointer-events: none;
+    margin-left: var(--uc-window-drag-space-pre,0px);}
+
+/* Menu style */
+menupopup {
+    border: none !important;
+    --panel-color: var(--light) !important;
+    --panel-background: var(--dark-base) !important;
+}
+
+menu:not([disabled="true"])[_moz-menuactive="true"], menuitem:not([disabled="true"])[_moz-menuactive="true"] {
+    border: none !important;
+    background-color: var(--light-selection) !important;
+    color: #fff !important;
+}
+
+/* toolbar, url bar and urlbarView */
+.toolbar-field {
+    border: 1px solid var(--light-trans) !important;
+    border-radius: 5px;
+    box-sizing: border-box !important;
+    color: var(--light) !important;
+    background-color: var(--transparent)!important;
+}
+
+#urlbar-background,#urlbar{ 
+    border-radius: 5px !important ;
+    background-color: transparent !important;
+    border: transparent !important;
+}
+#urlbar{
+    background-image: linear-gradient(90deg, var(--light-trans-1), var(--dark-base-trans-1));
+    color: var(--light) !important;
+}
+
+#urlbar-background{ 
+    margin-bottom: 2px !important;
+    margin-top: 2px !important;
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+
+}
+
+#urlbar[focused=true] #urlbar-background{
+    border: none !important;
+    background-image: null !important;
+    background-color: var(--dark-base) !important;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+#urlbar[open=true] #urlbar-background {
+    border: none !important;
+    background-image: null !important;
+    background-color: var(--dark-base) !important;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+} 
+
+#urlbar[focused=true] #urlbar {
+    background-image: null !important;
+    border: 1px solid var(--light-trans) !important;
+    border-radius: 5px !important;
+    box-sizing: border-box !important;
+    color: var(--light) !important;
+}
+
+#urlbar[open=true] #urlbar {
+    background-image: null !important;
+    border: 1px solid var(--light-trans) !important;
+    border-radius: 5px !important;
+    box-sizing: border-box !important;
+    color: var(--light) !important;
+}
+
+.urlbarView{
+    border: none !important;
+    background-color: var(--dark-base) !important;
+    color: var(--light) !important;
+}
+
+.urlbarView-url {
+    border: none !important;
+    color: var(--light-1) !important;
+}
+
+#sidebar-box {
+    z-index: 1000 !important;
+    position: relative !important;
+    min-width: var(--sidebar-collapsed-width) !important;
+    max-width: var(--sidebar-collapsed-width) !important;
+}
+
+#sidebar-header {
+    display: none !important;
+}
+
+/* inner width = expanded width & move inner to only show initial-width long section */
+#sidebar-box #sidebar {
+    position: absolute !important;
+    min-width: var(--sidebar-width) !important;
+    max-width: var(--sidebar-width) !important;
+    width: var(--sidebar-width) !important;
+    transform: translateX(calc(var(--sidebar-collapsed-width) - var(--sidebar-width)));
+    transition: all var(--transition-time) var(--ease-out);
+    background-color: var(--dark-base);
+}
+
+#sidebar {
+    padding-block-end: 15px;
+    background-color: var(--dark-base);
+    border-right: 1px solid var(--light-trans) !important;
+}
+
+/* move inner to show entire sidebar */
+#sidebar-box #sidebar:hover {
+    transform: translateX(0) !important;
+    box-shadow: 2px 0 33px -3px var(--sidebar-shadow-color);
+}
+
+#sidebar-box[sidebarcommand="viewBookmarksSidebar"] #sidebar {
+    transform: translateX(0) !important;
+    box-shadow: 2px 0 33px -3px var(--sidebar-shadow-color);
+}
+
+/* hide sidebar header for tree style tabs sidebar */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    display: none;
+}
+
+#sidebar-splitter {
+    display: none;
+}
+
+
+/* Set a border around the entire Firefox window with var(--light) color */
+#main-window {
+    box-sizing: border-box !important;
+    border: 1px solid var(--light) !important;
+    border-radius: 1px;
+    
+}
