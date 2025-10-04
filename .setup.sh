@@ -18,6 +18,7 @@ ln -s "$PWD/ascii"	"$HOME/.config/ascii"
 ln -s "$PWD/fish"	"$HOME/.config/fish"
 ln -s "$PWD/mpv"	"$HOME/.config/mpv"
 ln -s "$PWD/hypr"	"$HOME/.config/hypr"
+ln -s "$PWD/htop"	"$HOME/.config/htop"
 
 # install needed bins w/ pacman
 sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
