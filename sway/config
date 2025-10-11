@@ -1,5 +1,4 @@
-
 include /etc/sway/config.d/*
-include ~/.config/sway/config.d/*.conf
+include ./config.d/*.conf
 bindsym Mod1+Shift+c reload
 bindsym Mod4+Shift+c reload
