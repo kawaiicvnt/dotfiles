@@ -21,6 +21,9 @@ end
 
 set -gxa PATH ~/.nix-profile/bin
 set -gxa PATH ~/.local/bin
+set -gxa PATH ~/node_modules/.bin
+
+set -gx EDITOR $(which vim)
 
 # alias ssh="TERM=xterm-256color $(which ssh)"
 
