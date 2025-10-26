@@ -7,7 +7,7 @@ end
 
 # If the term is kitty and we're not in a toolbox, do make sure we spawn a kitten when ssh-ing.
 if test $TERM = "xterm-kitty"
-    and test $HOSTNAME != "toolbx"
+    and test $hostname != "toolbx"
   alias ssh="kitty +kitten ssh"	
 end
 
