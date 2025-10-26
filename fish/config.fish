@@ -13,7 +13,7 @@ end
 
 # Check if we're in a toolbox
 if test -e "/run/.containerenv"
-    and test $HOSTNAME = "toolbx"
+    and test $hostname = "toolbx"
   set -x fish_history tbx_$(grep "name=\"" /run/.containerenv | sed 's/name=\"//; s/.$//')
 else
   set -x fish_history $HOSTNAME
