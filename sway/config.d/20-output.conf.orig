@@ -1,0 +1,49 @@
+output "Samsung Display Corp. 0x4166 Unknown" {
+        mode 2880x1800
+        pos 6320 1080
+        scale 1.5
+        adaptive_sync enabled
+        render_bit_depth 10
+}
+
+output "AU Optronics 0x106D Unknown" {
+        mode 1920x1080
+        pos 6800 1080
+        scale 1
+        adaptive_sync enabled
+        render_bit_depth 8
+}
+
+output "Dell Inc. DELL U2421E JZVVBH3" {
+        mode 1920x1200
+        pos 5120 360
+        scale 1
+        adaptive_sync enabled
+        transform 270
+}
+
+output "Samsung Electric Company SAMSUNG Unknown" {
+        mode 3840x2160
+        pos 2560 730
+        scale 1.5
+        adaptive_sync enabled
+}
+output "LG Electronics LG HDR WFHD 0x0009F6A1" {
+        mode 2560 1080
+        pos 0 730
+        scale 1
+        adaptive_sync enabled
+}
+
+output "LG Electronics 2D FHD LG TV 0x01010101" {
+	pos 6800 0
+	scale 1
+}
+
+output "Invalid Vendor Codename - RTK Verbatim M14 demoset-1" {
+	pos 4880 1080
+	scale 1
+}
+
+bindswitch --locked lid:on  output eDP-1 disable
+bindswitch --locked lid:off output eDP-1 enable
