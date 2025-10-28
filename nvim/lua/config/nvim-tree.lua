@@ -11,7 +11,7 @@ nvim_tree.setup {
   sort_by = "name",
   update_cwd = false,
   view = {
-    width = 30,
+    width = 20,
     side = "left",
     preserve_window_proportions = false,
     number = true, -- changed
@@ -106,3 +106,15 @@ keymap.set("n", "<space>s", require("nvim-tree.api").tree.toggle, {
   silent = true,
   desc = "toggle nvim-tree",
 })
+
+local swap_then_open_tab = function()
+  local api = require("nvim-tree.api")
+  local node = api.tree.get_node_under_cursor()
+  vim.cmd("wincmd l")
+  api.node.open.tab(node)
+end
+keymap.set("n", "t", swap_then_open_tab, {
+  silent = true,
+  desc = "open tree in window tab",
+})
+--{ key = "t", action = "swap_then_open_tab", action_cb = swap_then_open_tab },

@@ -13,6 +13,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 --vim.g.NvimTreeRequired = 1
 
+-- Makes sure all items declared in argv are tabbed instead
 vim.cmd("tab all")
 
 -- some global settings
@@ -24,8 +25,11 @@ vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/plugins.vim"))
 --vim.cmd("source " .. vim.fs.joinpath(config_dir, "macros.vim"))
 require("macros")
 require("lsp")
+require("config.winbar").setup() -- {}
+require("config.tabline").setup() -- {} -- used to be without the ()
 vim.cmd[[colorscheme catppuccin-macchiato]]
 
+-- Basically at the end we force open nvim-tree
 vim.api.nvim_create_autocmd({ 'User' }, {
     pattern = 'VeryLazy',
     command = ':NvimTreeOpen'

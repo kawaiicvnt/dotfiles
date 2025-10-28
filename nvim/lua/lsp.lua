@@ -1,4 +1,3 @@
-local fn = vim.fn
 local api = vim.api
 local keymap = vim.keymap
 local lsp = vim.lsp
@@ -228,7 +227,7 @@ if utils.executable("ltex-ls") then
 end
 
 if utils.executable("clangd") then
-  lspconfig.clangd.setup {
+  lspconfig['clangd'] = {
     on_attach = custom_attach,
     capabilities = capabilities,
     filetypes = { "c", "cpp", "cc" },
@@ -240,7 +239,7 @@ end
 
 -- set up vim-language-server
 if utils.executable("vim-language-server") then
-  lspconfig.vimls.setup {
+  lspconfig['vimls'] = {
     on_attach = custom_attach,
     flags = {
       debounce_text_changes = 500,
@@ -261,8 +260,9 @@ end
 
 -- settings for lua-language-server can be found on https://luals.github.io/wiki/settings/
 if utils.executable("lua-language-server") then
-  lspconfig.lua_ls.setup {
+  lspconfig['luals'] = {
     on_attach = custom_attach,
+    cmd = { 'lua-language-server' },
     settings = {
       Lua = {
         runtime = {
@@ -272,6 +272,11 @@ if utils.executable("lua-language-server") then
         hint = {
           enable = true,
         },
+        diagnostics = {
+          globals = {
+            "vim",
+          },
+        },
       },
     },
     capabilities = capabilities,
@@ -279,17 +284,45 @@ if utils.executable("lua-language-server") then
 end
 
 -- Change diagnostic signs.
-fn.sign_define("DiagnosticSignError", { text = "🆇", texthl = "DiagnosticSignError" })
-fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
-fn.sign_define("DiagnosticSignInfo", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
-fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+--fn.sign_define("DiagnosticSignError", { text = "🆇", texthl = "DiagnosticSignError" })
+--fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
+--fn.sign_define("DiagnosticSignInfo", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
+--fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+--vim.diagnostic.config({
+--}
 
 -- global config for diagnostic
 diagnostic.config {
-  underline = false,
+  underline = true,
   virtual_text = false,
-  signs = true,
   severity_sort = true,
+
+  signs = {
+    text = {
+      [diagnostic.severity.ERROR] = "🆇",
+      [diagnostic.severity.WARN]  = "",
+      [diagnostic.severity.INFO]  = "",
+      [diagnostic.severity.HINT]  = "",
+    },
+    texthl = {
+      [diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [diagnostic.severity.WARN]  = "DiagnosticSignWarn",
+      [diagnostic.severity.INFO]  = "DiagnosticSignInfo",
+      [diagnostic.severity.HINT]  = "DiagnosticSignHint",
+    },
+    linehl = {
+--      [diagnostic.severity.ERROR] = "🆇",
+--      [diagnostic.severity.WARN]  = "",
+--      [diagnostic.severity.INFO]  = "",
+--      [diagnostic.severity.HINT]  = "",
+    },
+    numhl = {
+--      [diagnostic.severity.ERROR] = "🆇",
+--      [diagnostic.severity.WARN]  = "",
+--      [diagnostic.severity.INFO]  = "",
+--      [diagnostic.severity.HINT]  = "",
+    },
+  },
 }
 
 -- lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {

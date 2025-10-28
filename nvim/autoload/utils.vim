@@ -96,9 +96,7 @@ endfunction
 
 function! utils#Get_titlestr() abort
   let l:title_str = ''
-  if g:is_linux
-      let l:title_str = hostname() . '  '
-  endif
+  let l:title_str = hostname() . '  '
 
   let l:buf_path = expand('%:p:~')
   let l:title_str = l:title_str . l:buf_path . '  '

@@ -1,4 +1,4 @@
-local utils = require("utils")
+--local utils = require("utils")
 
 local plugin_dir = vim.fn.stdpath("data") .. "/lazy"
 local lazypath = plugin_dir .. "/lazy.nvim"
@@ -39,6 +39,41 @@ local plugin_specs = {
       require("config.nvim-cmp")
     end,
   },
+
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "rust_analyzer",
+        "clangd",
+        "vimls",
+      },
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+  },
+
+
+  -- Bufferline babyyy
+  --{
+  --  "akinsho/bufferline.nvim",
+  --  lazy = true,
+  --  dependencies = { "nvim-tree/nvim-web-devicons" },
+  --  config = function()
+  --    require("config.bufferline")
+  --  end,
+  --},
+
+  -- Winbar
+  -- {
+  --   "fgheng/winbar.nvim",
+  --   config = function()
+  --     require("config.winbar")
+  --   end,
+  -- },
 
   -- Super fast buffer jump
   {
@@ -90,27 +125,6 @@ local plugin_specs = {
   -- Highlight URLs inside vim
   { "itchyny/vim-highlighturl", event = "VeryLazy" },
 
-  -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
-  -- not be possible since we maybe in a server which disables GUI.
-  {
-    "chrishrb/gx.nvim",
-    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
-    cmd = { "Browse" },
-    init = function()
-      vim.g.netrw_nogx = 1 -- disable netrw gx
-    end,
-    enabled = function()
-      if vim.g.is_win or vim.g.is_mac then
-        return true
-      else
-        return false
-      end
-    end,
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = true, -- default settings
-    submodules = false, -- not needed, submodules are required only for tests
-  },
-
   -- The missing auto-completion for cmdline!
   {
     "gelguy/wilder.nvim",
@@ -132,7 +146,7 @@ local plugin_specs = {
       },
       -- more beautiful vim.ui.select
       picker = { enabled = true },
-      lazygit = { 
+      lazygit = {
         configure = true
       },
     },
