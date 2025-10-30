@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "icomoon-feather, Monospace"; /*, FontAwesome, Roboto, Helvetica, Arial, sans-serif*/;
+    font-family: "Adwaita Mono";
     font-size: 12px;
     border-radius: 3px;
 }
@@ -93,12 +93,6 @@ label.module:hover {
 }
 
 #clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
 #network,
 #pulseaudio,
 #wireplumber,
@@ -113,6 +107,21 @@ label.module:hover {
     padding: 0 10px;
     color: #ffffff;
 }
+
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight {
+    padding: 0 7px;
+    color: #ffffff;
+}
+
+#group {
+    padding: 0 10px;
+}
+
 
 #window,
 #workspaces {

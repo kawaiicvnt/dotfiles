@@ -15,28 +15,26 @@
         "clock",
         "battery",
         "idle_inhibitor",
-        "sway/workspaces",
+        "custom/media",
+	"sway/workspaces",
         "sway/scratchpad",
-	"hyprland/workspaces",
-	"hyprland/scratchpad",
+	//"hyprland/workspaces",
+	//"hyprland/scratchpad",
 	"custom/rot-0",
 	"custom/rot-180"
     ],
     "modules-center": [
-        "sway/window",
-	"hyprland/window"
+        "sway/window"
+	//"hyprland/window"
     ],
     "modules-right": [
         "pulseaudio",
         "network",
-	"bluetooth",
+	//"bluetooth",
         "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
+        "group/hardware",
         "sway/language",
-	"hyprland/language",
+	//"hyprland/language",
         "tray"
     ],
     // Modules configuration
@@ -56,9 +54,21 @@
     //         "default": ""
     //     }
     // },
-    "hyprland/window": {
-	"max-length": 60
+    //"hyprland/window": {
+//	"max-length": 60
+    //},
+    
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory",
+            "battery",
+            "temperature",
+            "backlight"
+        ]
     },
+    
     "sway/window": {
 	"max-length": 60
     },
@@ -83,14 +93,14 @@
 	    "border": 0,
 	    "min-width": 0
     },
-    "hyprland/language": {
-	    "format": "{short}",
-	    "padding": 0,
-	    "margin": 0,
-	    "spacing": 0,
-	    "border": 0,
-	    "min-width": 0
-    },
+//    "hyprland/language": {
+//	    "format": "{short}",
+//	    "padding": 0,
+//	    "margin": 0,
+//	    "spacing": 0,
+//	    "border": 0,
+//	    "min-width": 0
+//    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -120,7 +130,8 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        //"format-icons": ["", "", ""]
+        "format-icons": ["", "", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -135,7 +146,7 @@
         },
         "format": "{capacity}% {icon} ",
         "format-full": "{capacity}% {icon} ",
-        "format-charging": "{capacity}%  ",
+        "format-charging": "{capacity}%  ",
         "format-plugged": "{capacity}%  ",
         "format-alt": "{time} {icon} ",
         // "format-good": "", // An empty format will hide the module
@@ -157,9 +168,9 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
 	"max-length": 25,
         "format-wifi": " {signalStrength}% | {essid}", 
-        "format-ethernet": " {ipaddr}/{cidr}",
+        "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{gwaddr}/{cidr} via {ifname} on {essid}",
-        "format-linked": " {ifname} (No IP)",
+        "format-linked": "⚠ {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
@@ -167,10 +178,10 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} | {format_source}",
         "format-bluetooth": " {volume}% {icon} | {format_source}",
-        "format-bluetooth-muted": " {icon} | {format_source}",
-        "format-muted": " | {format_source}",
+        "format-bluetooth-muted": " {icon} | {format_source}",
+        "format-muted": " | {format_source}",
         "format-source": "{volume}% ",
-        "format-source-muted": ".",
+        "format-source-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": ["", "", ""],
@@ -183,16 +194,9 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
+        "format": " {text}",
         "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "playerctl metadata --format \"{{ artist }} - {{ title }}\"" // Script in resources folder
     },
     "custom/rot-180": {
 	"format": "{icon}180",
