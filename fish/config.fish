@@ -16,7 +16,7 @@ if test -e "/run/.containerenv"
     and test $hostname = "toolbx"
   set -x fish_history tbx_$(grep "name=\"" /run/.containerenv | sed 's/name=\"//; s/.$//')
 else
-  set -x fish_history $HOSTNAME
+  set -x fish_history $hostname
 end
 
 set -gxa PATH ~/.nix-profile/bin
