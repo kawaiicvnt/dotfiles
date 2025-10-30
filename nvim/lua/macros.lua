@@ -15,8 +15,8 @@ vim.keymap.set('n', '<C-A-q>', ':qall <CR>', { noremap = true, silent = true})
 vim.keymap.set('n', '<C-q>', ':q <CR>', { noremap = true, silent = true})
 
 -- prev/next window / tab
-vim.keymap.set('n', '<C-Tab>', '<C-w>w', { noremap = true, silent = true})
-vim.keymap.set('n', '<C-S-Tab>', '<C-w><S-w>', { noremap = true, silent = true})
+vim.keymap.set('n', '<A-Tab>', '<C-w>w', { noremap = true, silent = true})
+vim.keymap.set('n', '<A-S-Tab>', '<C-w><S-w>', { noremap = true, silent = true})
 
 -- resize current tab window / tab
 vim.keymap.set('n', '<C-S-A-Left>',  '3<C-w><lt>', { noremap = true, silent = true})

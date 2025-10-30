@@ -48,6 +48,24 @@ local plugin_specs = {
         "rust_analyzer",
         "clangd",
         "vimls",
+        "bashls",
+        --"csharp_ls",
+        "cssls",
+        "fish_lsp",
+        --"hls",
+        "html",
+        "htmx",
+        --"hyprls",
+        "java_language_server",
+        --"java-debug-adapter",
+        "jsonls",
+        "kotlin_language_server",
+        --"nix",
+        --"pkg:cargo/nixpkgs-fmt@1.3.0",
+        --"sql-formatter",
+        "systemd_ls",
+        "ts_ls",
+        "tailwindcss",
       },
     },
     dependencies = {
@@ -94,23 +112,18 @@ local plugin_specs = {
     end,
   },
 
-  -- A list of colorscheme plugin you may want to try. Find what suits you.
-  { "navarasu/onedark.nvim", lazy = true },
-  { "sainnhe/edge", lazy = true },
-  { "sainnhe/sonokai", lazy = true },
-  { "sainnhe/gruvbox-material", lazy = true },
-  { "sainnhe/everforest", lazy = true },
-  { "EdenEast/nightfox.nvim", lazy = true },
-  { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "olimorris/onedarkpro.nvim", lazy = true },
-  { "marko-cerovac/material.nvim", lazy = true },
+  { "sainnhe/everforest", lazy = true },                   -- light green leaning. I like it. Uses pink for magic numbers, which I like
   {
     "rockyzhang24/arctic.nvim",
     dependencies = { "rktjmp/lush.nvim" },
     name = "arctic",
     branch = "v2",
-  },
-  { "rebelot/kanagawa.nvim", lazy = true },
+  },                                                       -- Just dark enough. I like the use of the greenish-cyan
+  { "marko-cerovac/material.nvim", lazy = true },          -- palenight, deep-ocean and darker are nice
+  { "sainnhe/sonokai", lazy = true },                      -- orange and yellow are a bit too close
+  { "rebelot/kanagawa.nvim", lazy = true },                -- wave is a good amount of darkness, dragon is also good
+  { "catppuccin/nvim", name = "catppuccin", lazy = true }, -- a classic, I prefer macchiato
+  { "sainnhe/edge", lazy = true },                         -- very light green / light blue leaning. Solid imo 
   { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
   -- fancy start screen

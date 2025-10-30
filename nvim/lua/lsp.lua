@@ -183,7 +183,7 @@ else
 end
 
 if utils.executable("ruff") then
-  vim.lsp.config.ruff.setup {
+  vim.lsp.config['ruff'] = {
     on_attach = custom_attach,
     capabilities = capabilities,
     init_options = {
@@ -213,7 +213,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 if utils.executable("ltex-ls") then
-  lspconfig.ltex.setup {
+  lspconfig['ltex'] = {
     on_attach = custom_attach,
     cmd = { "ltex-ls" },
     filetypes = { "text", "plaintex", "tex", "markdown" },
@@ -252,7 +252,7 @@ end
 
 -- set up bash-language-server
 if utils.executable("bash-language-server") then
-  lspconfig.bashls.setup {
+  lspconfig['bashls'] = {
     on_attach = custom_attach,
     capabilities = capabilities,
   }

@@ -27,7 +27,7 @@ require("macros")
 require("lsp")
 require("config.winbar").setup() -- {}
 require("config.tabline").setup() -- {} -- used to be without the ()
-vim.cmd[[colorscheme catppuccin-macchiato]]
+vim.cmd[[colorscheme everforest]]
 
 -- Basically at the end we force open nvim-tree
 vim.api.nvim_create_autocmd({ 'User' }, {
