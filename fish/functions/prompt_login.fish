@@ -19,11 +19,16 @@ function prompt_login --description "display user name for the prompt"
     end
 
     # If we're running via SSH, change the host name and color.
-    set -l remote_indicator " "
+    set -l hostname_icon " "
     set -l color_host $fish_color_host
     if set -q SSH_TTY
-        set remote_indicator " "
+        set hostname_icon " "
         set color_host $fish_color_host_remote
+    end
+
+    # If we're in a toolbox show the sibby icon
+    if test "$(string match -r '^tbx_' $hostname)" = 'tbx_'
+        set hostname_icon " "
     end
 
     # Our most used computers get their own special color
@@ -44,5 +49,5 @@ function prompt_login --description "display user name for the prompt"
     end
 
     #echo -n -s (set_color $fish_color_param) "" (set_color $fish_color_user) "$USER" (set_color $fish_color_param) " >> " (set_color $color_host) (prompt_hostname) (set_color $fish_color_param) " >>" (set_color normal)
-    echo -n -s (set_color $fish_color_param) "" " << " (set_color $color_host) "$remote_indicator" (prompt_hostname) (set_color $fish_color_param) " << " (set_color $fish_color_user) "$USER" (set_color normal)
+    echo -n -s (set_color $fish_color_param) "" " << " (set_color $color_host) "$hostname_icon " (prompt_hostname) (set_color $fish_color_param) " << " (set_color $fish_color_user) "$USER" (set_color normal)
 end
