@@ -27,8 +27,10 @@ function prompt_login --description "display user name for the prompt"
     end
 
     # If we're in a toolbox show the sibby icon
-    if test "$(string match -r '^tbx_' $hostname)" = 'tbx_'
+    #if test "$(string match -r '^tbx_' $hostname)" = 'tbx_'
+    if test $hostname = 'toolbx'
         set hostname_icon " "
+        set color_host "00ffff" # cyan-ish I guess lmao
     end
 
     # Our most used computers get their own special color
