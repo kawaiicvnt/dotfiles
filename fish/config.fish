@@ -19,9 +19,15 @@ else
   set -x fish_history $hostname
 end
 
-set -gxa PATH ~/.nix-profile/bin
-set -gxa PATH ~/.local/bin
-set -gxa PATH ~/node_modules/.bin
+set -xa PATH ~/.nix-profile/bin
+set -xa PATH ~/.local/bin
+set -xa PATH ~/node_modules/.bin
+
+if test -e "/opt/devkitpro"  # We have the devkitpro
+  set -x DEVKITPRO /opt/devkitpro
+  set -x DEVKITARM /opt/devkitpro/devkitARM
+  set -x DEVKITPPC /opt/devkitpro/devkitPPC
+end
 
 set -gx EDITOR $(which vim)
 
