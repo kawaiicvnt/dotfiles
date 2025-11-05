@@ -1,5 +1,13 @@
 vim.loader.enable()
 
+-- We use nvim-tree, thus need to disable netrw early to win a race condition
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+vim.g.loaded_netrwFileHandlers = 1
+vim.g.loaded_netrw_gitignore = 1
+--vim.g.NvimTreeRequired = 1
+
 local utils = require("utils")
 
 local expected_version = "0.11.4"
@@ -7,11 +15,6 @@ utils.is_compatible_version(expected_version)
 
 local config_dir = vim.fn.stdpath("config")
 ---@cast config_dir string
-
--- We use nvim-tree, thus need to disable netrw early to win a race condition
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
---vim.g.NvimTreeRequired = 1
 
 -- Makes sure all items declared in argv are tabbed instead
 vim.cmd("tab all")

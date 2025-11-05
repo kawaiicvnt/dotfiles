@@ -226,10 +226,12 @@ if utils.executable("ltex-ls") then
   }
 end
 
+-- TODO see how we can do sibby project defined imports
 if utils.executable("clangd") then
   lspconfig['clangd'] = {
     on_attach = custom_attach,
     capabilities = capabilities,
+    --verbose = true,
     filetypes = { "c", "cpp", "cc" },
     flags = {
       debounce_text_changes = 500,
@@ -299,7 +301,7 @@ diagnostic.config {
 
   signs = {
     text = {
-      [diagnostic.severity.ERROR] = "🆇",
+      [diagnostic.severity.ERROR] = "",
       [diagnostic.severity.WARN]  = "",
       [diagnostic.severity.INFO]  = "",
       [diagnostic.severity.HINT]  = "",
@@ -311,13 +313,13 @@ diagnostic.config {
       [diagnostic.severity.HINT]  = "DiagnosticSignHint",
     },
     linehl = {
---      [diagnostic.severity.ERROR] = "🆇",
+--      [diagnostic.severity.ERROR] = "",
 --      [diagnostic.severity.WARN]  = "",
 --      [diagnostic.severity.INFO]  = "",
 --      [diagnostic.severity.HINT]  = "",
     },
     numhl = {
---      [diagnostic.severity.ERROR] = "🆇",
+--      [diagnostic.severity.ERROR] = "",
 --      [diagnostic.severity.WARN]  = "",
 --      [diagnostic.severity.INFO]  = "",
 --      [diagnostic.severity.HINT]  = "",

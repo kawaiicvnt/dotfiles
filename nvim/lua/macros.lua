@@ -24,6 +24,8 @@ vim.keymap.set('n', '<C-S-A-Right>', '3<C-w>>', { noremap = true, silent = true}
 vim.keymap.set('n', '<C-S-A-Down>',  '10<C-w><lt>', { noremap = true, silent = true})
 vim.keymap.set('n', '<C-S-A-Up>',    '10<C-w>>', { noremap = true, silent = true})
 
+-- save
+vim.keymap.set('n', '<C-w><C-s>', ':w<CR>', { noremap = false, silent = true})
 
 -- yd, yn, yb, y2d -- yank :3
 --

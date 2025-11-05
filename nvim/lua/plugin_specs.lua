@@ -39,6 +39,33 @@ local plugin_specs = {
       require("config.nvim-cmp")
     end,
   },
+  { -- optional blink completion source for require statements and module annotations
+    "saghen/blink.cmp",
+    build = "cargo +nightly build --release",
+    opts = {
+      sources = {
+        -- add lazydev to your completion providers
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
+          },
+        },
+      },
+    },
+  },
+
+  --{
+  --  "andrewferrier/wrapping.nvim",
+  --  config = function()
+  --    require("wrapping").setup({
+  --      auto_set_mode_heuristically = false,
+  --    })
+  --  end
+  --},
 
   {
     "mason-org/mason-lspconfig.nvim",
@@ -56,7 +83,7 @@ local plugin_specs = {
         "html",
         "htmx",
         --"hyprls",
-        "java_language_server",
+        --"java_language_server",
         --"java-debug-adapter",
         "jsonls",
         "kotlin_language_server",
@@ -73,7 +100,17 @@ local plugin_specs = {
       "neovim/nvim-lspconfig",
     },
   },
-
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
 
   -- Bufferline babyyy
   --{

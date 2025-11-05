@@ -1,5 +1,6 @@
 scriptencoding utf-8
 
+
 " change fillchars for folding, vertical split, end of buffer, and message separator
 set fillchars=fold:\ ,foldsep:\ ,foldopen:,foldclose:,vert:\│,eob:\ ,msgsep:‾,diff:╱
 
@@ -177,7 +178,7 @@ set diffopt+=context:3  " context for diff
 set diffopt+=internal,indent-heuristic,algorithm:histogram
 set diffopt+=linematch:60
 
-set nowrap  " do no wrap
-set noruler
+set wrap  " no wrap
+set ruler
 
 set showcmdloc=statusline
