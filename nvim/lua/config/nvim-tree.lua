@@ -11,7 +11,7 @@ nvim_tree.setup {
   sort_by = "name",
   update_cwd = false,
   view = {
-    width = 20,
+    width = 30,
     side = "left",
     preserve_window_proportions = false,
     number = true, -- changed
