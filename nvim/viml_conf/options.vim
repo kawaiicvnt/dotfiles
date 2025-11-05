@@ -178,7 +178,7 @@ set diffopt+=context:3  " context for diff
 set diffopt+=internal,indent-heuristic,algorithm:histogram
 set diffopt+=linematch:60
 
-set wrap  " no wrap
+set wrap  " wrap
 set ruler
 
 set showcmdloc=statusline
