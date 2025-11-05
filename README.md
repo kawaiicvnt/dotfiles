@@ -3,6 +3,33 @@ Cringe on main ≖‿≖
 
 No support attached. Good luck have fun.
 
+Some notes on stuff I should keep in mind.
+
+### udev rules
+#### microcontrollers
+##### Flipper Zero
+```
+#Flipper Zero serial port
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ATTRS{manufacturer}=="Flipper Devices Inc.", TAG+="uaccess"
+#Flipper Zero DFU
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", TAG+="uaccess"
+#Flipper ESP32s2 BlackMagic
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", ATTRS{idProduct}=="40??", ATTRS{manufacturer}=="Flipper Devices Inc.", TAG+="uaccess"
+```
+##### micro:bit
+The difference between v1 and v2, seems to be that the v2 product attribute string is quoted, while v1 is not.
+```
+#micro:bit v2
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0d28", ATTRS{idProduct}=="0204", ATTRS{manufacturer}=="ARM", ATTRS{product}=="\"BBC micro:bit CMSIS-DAP\"", TAG+="uaccess"
+#micro:bit v1
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0d28", ATTRS{idProduct}=="0204", ATTRS{manufacturer}=="ARM", ATTRS{product}=="BBC micro:bit CMSIS-DAP", TAG+="uaccess"
+```
+
+### HP Envy - system audio
+
+**THIS DOES NOT WORK RELIABLY**
+While the documentation below, is useful to know, it doesn't solve, neither works around the volume fluctuation problem. It might work for a few boot cycles, it eventually breaks (usually around suspend). Also it entirely fucks up headphone detection. When my mental health declines again, I'll take a deeper look into this.
+
 HP really loves messing with their audio..\
 Firstly, we need to ensure our kernel is after 6.10, as we need some patches that were upstreamed at 6.7 or 6.10 (it's been a while..).
 
