@@ -28,7 +28,13 @@ function prompt_login --description "display user name for the prompt"
 
     # If we're in a toolbox show the sibby icon
     #if test "$(string match -r '^tbx_' $hostname)" = 'tbx_'
+    set -l hostname_name $hostname
     if test $hostname = 'toolbx'
+        # Check if we're in a toolbox
+        if test -e "/run/.containerenv"
+            and test $hostname = "toolbx"
+          set -x hostname_name $(grep "name=\"" /run/.containerenv | sed 's/name=\"//; s/.$//; s/-/_/')
+        end
         set hostname_icon " "
         set color_host "00ffff" # cyan-ish I guess lmao
     end
@@ -50,6 +56,10 @@ function prompt_login --description "display user name for the prompt"
         set fish_color_user "#ff0000"
     end
 
+    if test $hostname_name = $hostname
+        set hostname_name (prompt_hostname)
+    end
+
     #echo -n -s (set_color $fish_color_param) "" (set_color $fish_color_user) "$USER" (set_color $fish_color_param) " >> " (set_color $color_host) (prompt_hostname) (set_color $fish_color_param) " >>" (set_color normal)
-    echo -n -s (set_color $fish_color_param) "" " << " (set_color $color_host) "$hostname_icon " (prompt_hostname) (set_color $fish_color_param) " << " (set_color $fish_color_user) "$USER" (set_color normal)
+    echo -n -s (set_color $fish_color_param) " << " (set_color $color_host) "$hostname_icon$hostname_name" (set_color $fish_color_param) " << " (set_color $fish_color_user) "$USER" (set_color normal)
 end
