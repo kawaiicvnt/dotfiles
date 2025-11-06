@@ -180,5 +180,7 @@ set diffopt+=linematch:60
 
 set wrap  " wrap
 set ruler
+set breakindent
+set breakindentopt=shift:2
 
 set showcmdloc=statusline
