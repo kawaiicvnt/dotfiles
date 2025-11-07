@@ -113,14 +113,19 @@ local plugin_specs = {
   },
 
   -- Bufferline babyyy
-  --{
-  --  "akinsho/bufferline.nvim",
-  --  lazy = true,
-  --  dependencies = { "nvim-tree/nvim-web-devicons" },
-  --  config = function()
-  --    require("config.bufferline")
-  --  end,
-  --},
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("config.bufferline")
+    end,
+  },
+
+  -- Scope
+  {
+    "tiagovla/scope.nvim",
+    config = true,
+  },
 
   -- Winbar
   {
@@ -159,6 +164,8 @@ local plugin_specs = {
             'spectre_panel',
             'toggleterm',
             'qf',
+            'fzf',
+            '',
         }
       })
     end,
@@ -169,7 +176,7 @@ local plugin_specs = {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("lualine").setup()
+      require("lualine").setup({})
     end
   },
 
@@ -219,10 +226,10 @@ local plugin_specs = {
   { "itchyny/vim-highlighturl", event = "VeryLazy" },
 
   -- The missing auto-completion for cmdline!
-  {
-    "gelguy/wilder.nvim",
-    build = ":UpdateRemotePlugins",
-  },
+  --{
+  --  "gelguy/wilder.nvim",
+  --  build = ":UpdateRemotePlugins",
+  --},
 
   {
     "folke/snacks.nvim",

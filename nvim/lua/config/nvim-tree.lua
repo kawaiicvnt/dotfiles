@@ -7,9 +7,14 @@ nvim_tree.setup {
   hijack_netrw = true,
   hijack_cursor = true,
   hijack_unnamed_buffer_when_opening = false,
-  open_on_tab = false,
+  open_on_tab = true,
   sort_by = "name",
   update_cwd = false,
+  tab = {
+    sync = {
+      open = true,
+    },
+  },
   view = {
     width = 30,
     side = "left",
@@ -19,6 +24,7 @@ nvim_tree.setup {
     signcolumn = "yes",
   },
   renderer = {
+    root_folder_label = ":t:s?$?/..?",
     indent_markers = {
       enable = true,
       icons = {

@@ -1,5 +1,6 @@
 require("bufferline").setup {
   options = {
+    mode = "tabs",
     numbers = "none",
     close_command = "bdelete! %d",
     right_mouse_command = nil,
@@ -17,7 +18,7 @@ require("bufferline").setup {
     max_name_length = 18,
     max_prefix_length = 15,
     tab_size = 10,
-    diagnostics = false,
+    diagnostics = "nvim_lsp",
     custom_filter = function(bufnr)
       -- if the result is false, this buffer will be shown, otherwise, this
       -- buffer will be hidden.
@@ -33,6 +34,24 @@ require("bufferline").setup {
 
       return true
     end,
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = function()
+          local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
+          local ret = ""
+          for s in string.gmatch(cwd, "[^/]+/") do
+            ret = ret..string.sub(string.match(s, "[%p]?[%p]?[^%p]?"),0,2).."/"
+          end
+          local dir = string.match(cwd, "/[^/]+$")
+          ret = ret..string.sub(dir,2,string.len(dir))
+          ret = string.gsub(ret, "~//", "~/", 1)
+          return ret
+        end,
+        text_align = "center",
+        separator = true,
+      }
+    },
     show_buffer_icons = false,
     show_buffer_close_icons = true,
     show_close_icon = true,

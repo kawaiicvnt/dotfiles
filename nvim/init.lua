@@ -28,8 +28,6 @@ vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/plugins.vim"))
 --vim.cmd("source " .. vim.fs.joinpath(config_dir, "macros.vim"))
 require("macros")
 require("lsp")
-require("config.winbar").setup() -- {}
-require("config.tabline").setup() -- {} -- used to be without the ()
 vim.cmd[[colorscheme everforest]]
 
 -- Basically at the end we force open nvim-tree
