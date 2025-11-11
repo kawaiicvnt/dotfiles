@@ -1,5 +1,13 @@
 #! /bin/sh
-echo "make sure this is run in and from your dotfiles directory"
+
+while true; do
+echo ""
+    read -p "Make sure this is run in and from your dotfiles directory. Continue? [y/N] " yn
+    case $yn in
+        [Yy]* ) make install; break;;
+        * ) echo "Aborting install" ; exit;;
+    esac
+done
 
 # link folders / files
 ln -s "$PWD/.zshrc"  	"$HOME/.zshrc"
@@ -18,7 +26,9 @@ ln -s "$PWD/ascii"	"$HOME/.config/ascii"
 ln -s "$PWD/fish"	"$HOME/.config/fish"
 ln -s "$PWD/mpv"	"$HOME/.config/mpv"
 ln -s "$PWD/hypr"	"$HOME/.config/hypr"
-ln -s "$PWD/htop"	"$HOME/.config/htop"
+
+# We just want the defaults here, then the computers can deviate
+cp -r "$PWD/htop"	"$HOME/.config/htop"
 
 # install needed bins w/ pacman
 sudo pacman -Sy dunst i3-wm kitty picom polybar thunar rofi zsh sway waybar
