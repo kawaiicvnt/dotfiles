@@ -36,19 +36,15 @@ function prompt_login --description "display user name for the prompt"
           set -x hostname_name $(grep "name=\"" /run/.containerenv | sed 's/name=\"//; s/.$//; s/-/_/')
         end
         set hostname_icon " "
-        set color_host "eecccc" # cyan-ish I guess lmao
+        set color_host "bbffee" # cyan-ish I guess lmao
     end
 
     # Our most used computers get their own special color
     switch $hostname
         case "sylveon"
-            set color_host "#ffddff" # pink
+            set color_host "#ddddff"
         case "espeon"
-            set color_host "#ccccff" # purple
-        case "umbreon"
-            set color_host "#cccccc" # gray
-        case "plantj"
-            set color_host "#ccffcc" # light green
+            set color_host "#bbffbb"
     end
 
     if test $hostname_name = $hostname
@@ -68,7 +64,7 @@ function prompt_login --description "display user name for the prompt"
     end
 
     echo -ns (prompt_block $color_host "$hostname_icon$hostname_name")
-    echo -ns (prompt_block $user_color "$user_name")
+    #echo -ns (prompt_block $user_color "$user_name")
     echo -ns (set_color normal)
 end
 
