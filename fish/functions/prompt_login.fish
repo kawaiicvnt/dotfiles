@@ -36,30 +36,40 @@ function prompt_login --description "display user name for the prompt"
           set -x hostname_name $(grep "name=\"" /run/.containerenv | sed 's/name=\"//; s/.$//; s/-/_/')
         end
         set hostname_icon " "
-        set color_host "00ffff" # cyan-ish I guess lmao
+        set color_host "eecccc" # cyan-ish I guess lmao
     end
 
     # Our most used computers get their own special color
     switch $hostname
         case "sylveon"
-            set color_host "#ccbbff" # lilac
+            set color_host "#ffddff" # pink
         case "espeon"
-            set color_host "#ffbbdd" # pink-ish
+            set color_host "#ccccff" # purple
         case "umbreon"
-            set color_host "#aaaaaa" # gray
+            set color_host "#cccccc" # gray
         case "plantj"
-            set color_host "#bbffbb" # light green
-    end
-
-    # If we're root, make the color *known*
-    if test $fish_color_user = "root"
-        set fish_color_user "#ff0000"
+            set color_host "#ccffcc" # light green
     end
 
     if test $hostname_name = $hostname
         set hostname_name (prompt_hostname)
     end
 
-    #echo -n -s (set_color $fish_color_param) "" (set_color $fish_color_user) "$USER" (set_color $fish_color_param) " >> " (set_color $color_host) (prompt_hostname) (set_color $fish_color_param) " >>" (set_color normal)
-    echo -n -s (set_color $fish_color_param) " << " (set_color $color_host) "$hostname_icon$hostname_name" (set_color $fish_color_param) " << " (set_color $fish_color_user) "$USER" (set_color normal)
+    # If we're root, make the color *known*
+    # If we're our known user abbreviate to kc
+    set -l user_color $fish_color_user
+    set -l user_name $USER
+    switch $user_name
+      case "root"
+        set user_color $fish_color_user_root
+      case "kawaiicvnt"
+        set user_color "#c0ffc0"
+        set user_name "kc"
+    end
+
+    echo -ns (prompt_block $color_host "$hostname_icon$hostname_name")
+    echo -ns (prompt_block $user_color "$user_name")
+    echo -ns (set_color normal)
 end
+
+#
