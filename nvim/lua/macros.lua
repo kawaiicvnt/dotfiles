@@ -1,7 +1,7 @@
 --[[     Handling nvim-wide     --]]
 -- quit nvim
-vim.keymap.set('n', '<C-A-q>', ':qall <CR>', { noremap = true, silent = true})
-vim.keymap.set('n', '<C-q>', ':q <CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<C-q>', ':qall <CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<C-A-q>', ':q <CR>', { noremap = true, silent = true})
 
 
 --[[     Editing     --]]
@@ -21,14 +21,24 @@ vim.keymap.set('n', '<C-w><C-s>', ':w<CR>', { noremap = false, silent = true})
 vim.keymap.set('n', '<C-S-A-,>', ':prev <CR>', { noremap = true, silent = true})
 vim.keymap.set('n', '<C-S-A-.>', ':next <CR>', { noremap = true, silent = true})
 -- prev/next tab
-vim.keymap.set('n', '<C-A-,>', ':tabprev <CR>', { noremap = true, silent = true})
-vim.keymap.set('n', '<C-A-.>', ':tabnext <CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<C-A-,>', ':tabnext <CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<C-A-.>', ':tabprev <CR>', { noremap = true, silent = true})
 -- prev/next window
-vim.keymap.set('n', '<C-,>', '<C-w>w', { noremap = true, silent = true})
-vim.keymap.set('n', '<C-.>', '<C-w><S-w>', { noremap = true, silent = true})
+vim.keymap.set('n', '<C-,>', ':wincmd W <CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<C-.>', ':wincmd w <CR>', { noremap = true, silent = true})
 -- prev/next buffer - remember: we use scope.nvim, so buffers are scoped!
 vim.keymap.set('n', '<C-S-,>', ':bprev <CR>', { noremap = true, silent = true})
 vim.keymap.set('n', '<C-S-.>', ':bnext <CR>', { noremap = true, silent = true})
+-- soft-wrap aware movement
+vim.keymap.set({'n','v'}, 'k', 'v:count == 0 ? \'gk\' : \'k\'', { expr = true, silent = true })
+vim.keymap.set({'n','v'}, 'j', 'v:count == 0 ? \'gj\' : \'j\'', { expr = true, silent = true })
+vim.keymap.set({'n','v'}, '<Up>', 'v:count == 0 ? \'gk\' : \'k\'', { expr = true, silent = true })
+vim.keymap.set({'n','v'}, '<Down>', 'v:count == 0 ? \'gj\' : \'j\'', { expr = true, silent = true })
+vim.keymap.set('i', '<Up>', 'v:count == 0 ? \'<C-o>gk\' : \'<C-o>k\'', { expr = true, silent = true })
+vim.keymap.set('i', '<Down>', 'v:count == 0 ? \'<C-o>gj\' : \'<C-o>j\'', { expr = true, silent = true })
+-- move to start / end of line
+vim.keymap.set('!', '<C-a>', '<home>', { noremap = true })
+vim.keymap.set('!', '<C-e>', '<end>', { noremap = true })
 
 
 --[[     Modifying looks     --]]
@@ -38,8 +48,6 @@ vim.keymap.set('n', '<C-S-A-Right>', '3<C-w>>', { noremap = true, silent = true}
 vim.keymap.set('n', '<C-S-A-Down>',  '10<C-w><lt>', { noremap = true, silent = true})
 vim.keymap.set('n', '<C-S-A-Up>',    '10<C-w>>', { noremap = true, silent = true})
 
--- yd, yn, yb, y2d -- yank :3
---
 -- TODO: Is there a better way to do this?
 -- C-/ -- comment out line //
 -- C-3 -- comment out line #

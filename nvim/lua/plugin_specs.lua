@@ -39,7 +39,7 @@ local plugin_specs = {
       require("config.nvim-cmp")
     end,
   },
-  { -- optional blink completion source for require statements and module annotations
+  --[[{ -- optional blink completion source for require statements and module annotations
     "saghen/blink.cmp",
     build = "cargo +nightly build --release",
     opts = {
@@ -55,6 +55,19 @@ local plugin_specs = {
           },
         },
       },
+    },
+  },--]]
+
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      -- log_level = 'debug',
     },
   },
 
@@ -210,7 +223,7 @@ local plugin_specs = {
   { "sainnhe/sonokai", lazy = true },                      -- orange and yellow are a bit too close
   { "rebelot/kanagawa.nvim", lazy = true },                -- wave is a good amount of darkness, dragon is also good
   { "catppuccin/nvim", name = "catppuccin", lazy = true }, -- a classic, I prefer macchiato
-  { "sainnhe/edge", lazy = true },                         -- very light green / light blue leaning. Solid imo 
+  { "sainnhe/edge", lazy = true },                         -- very light green / light blue leaning. Solid imo
   { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
   -- fancy start screen
