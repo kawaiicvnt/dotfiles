@@ -1,0 +1,25 @@
+[general]
+import = ["everforest-dark.toml"]
+
+
+[window]
+padding = { x = 20, y = 20 }
+title = "Alaclitty"
+class.general = "Alaclitty"
+
+
+[font]
+normal = { family = "DroidSansMNerdFontMono", style = "Regular" }
+size = 15
+
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+vi_mode_style = { shape = "Block", blinking = "Off" }
+blink_interval = 500
+blink_timeout = 0
+thickness = 0.2
+
+
+[terminal]
+shell.program = "/bin/fish"
