@@ -40,8 +40,11 @@ vim.keymap.set('i', '<Down>', 'v:count == 0 ? \'<C-o>gj\' : \'<C-o>j\'', { expr 
 vim.keymap.set('!', '<C-a>', '<home>', { noremap = true })
 vim.keymap.set('!', '<C-e>', '<end>', { noremap = true })
 
+--[[     Tab management     --]]
+vim.keymap.set('n', '<C-w>t', ':tabnew <CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>q', ':tabclose <CR>', { noremap = true, silent = true })
 
---[[     Modifying looks     --]]
+--[[     Modifying windows     --]]
 -- resize current window
 vim.keymap.set('n', '<C-S-A-Left>',  '3<C-w><lt>', { noremap = true, silent = true})
 vim.keymap.set('n', '<C-S-A-Right>', '3<C-w>>', { noremap = true, silent = true})
