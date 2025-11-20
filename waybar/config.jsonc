@@ -1,5 +1,5 @@
 // -*- mode: jsonc -*-
-{
+[{
     "layer": "bottom", // Waybar at top layer
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
@@ -7,7 +7,7 @@
     "margin-right": 5,
     "margin-left": 5,
 
-    "output": "!Invalid Vendor Codename - RTK Verbatim M14 demoset-1",
+    "output": ["!Invalid Vendor Codename - RTK Verbatim M14 demoset-1", "!Dell Inc. DELL U2421E JZVVBH3", "*"],
     "modules-left": [
         "group/hardware",
         "sway/workspaces",
@@ -21,154 +21,32 @@
         "custom/media",
         "tray"
     ],
-    "group/hardware": {
-        "orientation": "horizontal",
-        "modules": [
-            "battery",
-            "power-profiles-daemon",
-            "idle_inhibitor",
-            "network",
-            "backlight",
-            "sway/language",
-            "custom/rot-0",
-            "custom/rot-180"
-        ]
-    },
-    
-    "sway/window": {
-        "max-length": 60
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "bluetooth" : {
-        "format": "{status}"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "sway/language": {
-        "format": "{short}",
-        "padding": 0,
-        "margin": 0,
-        "spacing": 0,
-        "border": 0,
-        "min-width": 0
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "tooltip-format": "{:%Y-%m-%d}",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        //"format-icons": ["", "", ""]
-        "format-icons": ["", "", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            "good": 50,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon} ",
-        "format-full": "{capacity}% {icon} ",
-        "format-charging": "{capacity}%  ",
-        "format-plugged": "{capacity}%  ",
-        "format-alt": "{time} {icon} ",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
-    "network": {
-        "format-wifi":         " ",
-        "format-ethernet":     " ",
-        "format-linked":       "⚠ ",
-        "format-disconnected": "⚠ ",
-        "tooltip-format-wifi":         "{signalStrength}% | {essid}\n{ipaddr}\non {gwaddr}/{cidr}\nvia {ifname} on {essid}",
-        "tooltip-format-ethernet":     "{ipaddr}\non {gwaddr}/{cidr}\nvia {ifname} on {essid}",
-        "tooltip-format-linked":       "{ifname} (No IP)",
-        "tooltip-format-disconnected": "Disconnected"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} | {format_source}",
-        "format-bluetooth": " {volume}% {icon} | {format_source}",
-        "format-bluetooth-muted": " {icon} | {format_source}",
-        "format-muted": " | {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": " ",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": ["", "", ""],
-            "headset": ["", "", ""],
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": " {text}",
-        "max-length": 40,
-        "exec": "playerctl metadata --format \"{{ artist }} - {{ title }}\"", // Script in resources folder
-        "interval": 1,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
-        "on-click-middle": "playerctl previous"
-    },
-    "custom/rot-180": {
-        "format": "{icon} 180 ",
-        "format-icon": "180",
-        "on-click": "swaymsg output eDP-1 transform 180 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix \"-1\" 0 1 0 \"-1\" 1 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix \"-1\" 0 1 0 \"-1\" 1"
-    },
-    "custom/rot-0": {
-        "format": "{icon} 0 ",
-        "format-icon": "0",
-        "on-click": "swaymsg output eDP-1 transform 0 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller_Stylus\" calibration_matrix 1 0 0 0 1 0 ; swaymsg input \"1267:12238:Intel_Touch_Host_Controller\" calibration_matrix 1 0 0 0 1 0"
-    }
-}
+
+    "include": "modules.jsonc"
+},
+{
+    "layer": "bottom", // Waybar at top layer
+    "position": "bottom",
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    "margin-top": 5,
+    "margin-right": 5,
+    "margin-left": 5,
+
+    "output": ["Invalid Vendor Codename - RTK Verbatim M14 demoset-1", "Dell Inc. DELL U2421E JZVVBH3"],
+    "modules-left": [
+        "group/hardware",
+        "sway/workspaces",
+        "sway/scratchpad"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "custom/media",
+        "tray"
+    ],
+
+    "include": "modules.jsonc"
+}]
